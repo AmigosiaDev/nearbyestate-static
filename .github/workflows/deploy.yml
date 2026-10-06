@@ -1,0 +1,51 @@
+name: Deploy Nearby Estate
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Create SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.BIGROCK_PRIVATE_KEY }}" > ~/.ssh/nearbyestate_github
+          chmod 600 ~/.ssh/nearbyestate_github
+
+      - name: Add BigRock host
+        run: |
+          ssh-keyscan -H "${{ secrets.BIGROCK_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy to BigRock
+        run: |
+          tar -czf dist.tar.gz -C dist .
+          scp \
+            -i ~/.ssh/nearbyestate_github \
+            dist.tar.gz \
+            "${{ secrets.BIGROCK_USER }}@${{ secrets.BIGROCK_HOST }}:/home4/tvmks5ap/"
+
+      - name: Extract website on BigRock
+        run: |
+          ssh \
+            -i ~/.ssh/nearbyestate_github \
+            "${{ secrets.BIGROCK_USER }}@${{ secrets.BIGROCK_HOST }}" \
+            'rm -rf /home4/tvmks5ap/info.nearbyestate.in/* /home4/tvmks5ap/info.nearbyestate.in/.[!.]* 2>/dev/null || true; tar -xzf /home4/tvmks5ap/dist.tar.gz -C /home4/tvmks5ap/info.nearbyestate.in; rm -f /home4/tvmks5ap/dist.tar.gz'
