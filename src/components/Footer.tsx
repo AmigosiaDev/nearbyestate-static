@@ -111,6 +111,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                 <a href="#how-it-works" className="hover:text-emerald-400 transition-colors">How It Works</a>
               </li>
               <li>
+                <a href="#agencies" className="hover:text-emerald-400 transition-colors">For Agencies</a>
+              </li>
+              <li>
                 <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
               </li>
               <li>

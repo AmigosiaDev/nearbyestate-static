@@ -57,9 +57,54 @@ export const BRAND_CONFIG = {
   playStoreUrl: 'https://play.google.com/store/apps/details?id=space.nearestate.twa',
   webAppUrl: 'https://nearestate.space/home',
   instagramUrl: 'https://www.instagram.com/nearestate_/',
+  agencyWhatsAppUrl: 'https://wa.me/?text=Hello%20NearbyEstate%2C%20I%20would%20like%20to%20partner%20with%20NearbyEstate%20as%20a%20Real%20Estate%20Agency.',
   officialWebUrl: 'https://nearbyestate.in',
   copyrightYear: 2026,
 };
+
+export interface AgencyBenefit {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  iconName: string;
+  badge: string;
+}
+
+export const AGENCY_BENEFITS: AgencyBenefit[] = [
+  {
+    id: 'branding',
+    title: 'Dedicated Agency Profile',
+    subtitle: 'Brand Recognition',
+    description: 'Showcase your company logo, office address, team contacts, and RERA registration to establish verified local authority.',
+    iconName: 'Building2',
+    badge: 'Verified Identity',
+  },
+  {
+    id: 'unlimited-inventory',
+    title: 'Unlimited Property Listings',
+    subtitle: '100% Free Always',
+    description: 'Post and manage your entire portfolio of houses, apartments, commercial spaces, and layout plots with zero listing fees.',
+    iconName: 'Layers',
+    badge: '₹0 Listing Fee',
+  },
+  {
+    id: 'direct-leads',
+    title: 'Direct Client Inquiries',
+    subtitle: 'Zero Commission Deductions',
+    description: 'All buyer calls and WhatsApp messages connect straight to your agency phone. NearbyEstate never takes any brokerage cut.',
+    iconName: 'PhoneCall',
+    badge: '100% Commission Yours',
+  },
+  {
+    id: 'radar-priority',
+    title: 'Hyperlocal Map Visibility',
+    subtitle: 'Targeted Local Reach',
+    description: 'Stand out with a distinct Verified Partner badge when prospective buyers and tenants explore properties in your locality.',
+    iconName: 'ShieldCheck',
+    badge: 'Top Proximity Match',
+  },
+];
 
 export const PROPERTY_CATEGORIES: PropertyCategory[] = [
   {

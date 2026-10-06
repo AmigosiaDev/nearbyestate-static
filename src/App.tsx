@@ -8,6 +8,7 @@ import { AppFeatures } from './components/AppFeatures';
 import { AppShowcase } from './components/AppShowcase';
 import { HowItWorks } from './components/HowItWorks';
 import { UseCases } from './components/UseCases';
+import { AgencySection } from './components/AgencySection';
 import { DownloadCTA } from './components/DownloadCTA';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
@@ -48,7 +49,10 @@ export const App: React.FC = () => {
         {/* 8. Buy / Rent / Sell / Lease (Asymmetric editorial layout) */}
         <UseCases />
 
-        {/* 9. High-Impact Download CTA Banner */}
+        {/* 9. For Real Estate Agencies & Brokers (Partner Network) */}
+        <AgencySection />
+
+        {/* 10. High-Impact Download CTA Banner */}
         <DownloadCTA />
 
         {/* 10. Frequently Asked Questions */}
