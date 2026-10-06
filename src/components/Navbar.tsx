@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
               id="navbar_webapp_cta"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-100 hover:bg-slate-200/90 text-slate-800 text-xs sm:text-sm font-semibold transition-all duration-200 border border-slate-200/60"
             >
-              <span>Try Web App</span>
+              <span>Try Web App...</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </a>
 
