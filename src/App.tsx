@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PropertyCategories } from './components/PropertyCategories';
-import { DiscoverySection } from './components/DiscoverySection';
+// import { DiscoverySection } from './components/DiscoverySection';
 import { WhyNearbyEstate } from './components/WhyNearbyEstate';
-import { AppFeatures } from './components/AppFeatures';
-import { AppShowcase } from './components/AppShowcase';
-import { HowItWorks } from './components/HowItWorks';
-import { UseCases } from './components/UseCases';
-import { AgencySection } from './components/AgencySection';
+// import { AppFeatures } from './components/AppFeatures';
+// import { AppShowcase } from './components/AppShowcase';
+// import { HowItWorks } from './components/HowItWorks';
+// import { UseCases } from './components/UseCases';
+// import { AgencySection } from './components/AgencySection';
+import { AgentProSection } from './components/AgentProSection';
 import { DownloadCTA } from './components/DownloadCTA';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
@@ -25,37 +26,22 @@ export const App: React.FC = () => {
 
       {/* Main Semantic Landmark */}
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section (64-76px H1, 15-20% larger phone, 3 restrained cards, location pulse) */}
+        {/* 1. Hero Section */}
         <Hero />
 
-        {/* 2. Property Categories (Swipeable mobile scroll, clean hover elevation) */}
+        {/* 2. Property Categories */}
         <PropertyCategories />
 
-        {/* 3. Dedicated Location Discovery Canvas (Property + Location + Distance) */}
-        <DiscoverySection />
-
-        {/* 4. Why NearbyEstate (Asymmetric 1 large + 3 supporting layout) */}
+        {/* 3. Core Value Pillars */}
         <WhyNearbyEstate />
 
-        {/* 5. App Features Grid */}
-        <AppFeatures />
+        {/* 4. For Agencies & Brokers (Agent Pro Subscription) */}
+        <AgentProSection />
 
-        {/* 6. App Showcase (Live Discovery Animation + 4 interactive screens) */}
-        <AppShowcase />
-
-        {/* 7. How It Works (Connected 3-step timeline) */}
-        <HowItWorks />
-
-        {/* 8. Buy / Rent / Sell / Lease (Asymmetric editorial layout) */}
-        <UseCases />
-
-        {/* 9. For Real Estate Agencies & Brokers (Partner Network) */}
-        <AgencySection />
-
-        {/* 10. High-Impact Download CTA Banner */}
+        {/* 5. Download CTA Banner */}
         <DownloadCTA />
 
-        {/* 10. Frequently Asked Questions */}
+        {/* 6. Frequently Asked Questions */}
         <FAQ />
       </main>
 

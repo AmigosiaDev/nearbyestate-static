@@ -55,7 +55,7 @@ export const BRAND_CONFIG = {
   subtagline: 'Discover homes, land, shops, offices and more with NearbyEstate.',
   highlightBadge: '100% FREE • UNLIMITED PROPERTY ADS • ZERO BROKERAGE',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=space.nearestate.twa',
-  webAppUrl: 'https://nearestate.space/home',
+  webAppUrl: 'https://nearbyestate.in/home',
   instagramUrl: 'https://www.instagram.com/nearestate_/',
   agencyWhatsAppUrl: 'https://wa.me/?text=Hello%20NearbyEstate%2C%20I%20would%20like%20to%20partner%20with%20NearbyEstate%20as%20a%20Real%20Estate%20Agency.',
   officialWebUrl: 'https://nearbyestate.in',

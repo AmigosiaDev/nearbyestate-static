@@ -4,13 +4,12 @@ import {
   MapPin,
   Navigation,
   Compass,
-  ArrowRight,
   ShieldCheck,
   Phone,
-  Zap,
   Sparkles,
   Check,
   Apple,
+  ArrowUpRight,
 } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
 import { GooglePlayIcon } from './Navbar';
@@ -34,43 +33,31 @@ export const Hero: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* ================= LEFT COLUMN: HERO CONTENT ================= */}
           <div className="lg:col-span-7 text-left space-y-6 sm:space-y-7">
-            {/* Sleek Pill Badge: ⚡ 100% Direct Owner • Zero Brokerage with soft mint border */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50/90 border border-[#00D084]/50 text-[#0F382C] text-xs sm:text-sm font-bold shadow-xs shadow-emerald-500/10 backdrop-blur-xs"
-            >
-              <Zap className="w-3.5 h-3.5 text-[#00D084] fill-[#00D084]" />
-              <span>100% Direct Owner • Zero Brokerage</span>
-            </motion.div>
-
-            {/* Punchy Headline: Discover verified homes & land right next door. */}
+            {/* Punchy Headline: Find Properties. Skip the Middleman. */}
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold text-[#111827] tracking-tight leading-[1.12] pb-1"
             >
-              Discover verified homes & land{' '}
-              <span className="relative inline-block text-[#0F382C]">
-                <span className="relative z-10 underline decoration-[#00D084] decoration-[5px] sm:decoration-[6px] underline-offset-[8px] sm:underline-offset-[12px]">
-                  right next door.
-                </span>
+              Find Properties{' '}
+              <br className="hidden sm:inline" />
+              <span className="text-[#0F382C]">
+                Skip the Middleman
               </span>
             </motion.h1>
 
-            {/* Concise 2-line Subheader */}
+            {/* Concise Subheader */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
               className="text-base sm:text-lg lg:text-xl text-[#111827]/75 max-w-xl leading-relaxed font-normal"
             >
-              Hyperlocal GPS precision connects you directly to vacant plots, houses, and commercial spaces. Post and discover free listings with zero middleman fees.
+              Discover verified homes, plots, and spaces nearby — 100% free with zero brokerage.
             </motion.p>
 
-            {/* Dual CTA Group */}
+            {/* CTA Group */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -92,16 +79,16 @@ export const Hero: React.FC = () => {
                 <span>Get Mobile App</span>
               </a>
 
-              {/* Secondary Button: Clean outline "Try in Browser →" */}
+              {/* Secondary Button: Try on Web (Brand Matching Emerald Tint) */}
               <a
-                href={BRAND_CONFIG.webAppUrl}
+                href="https://nearbyestate.in/home"
                 target="_blank"
                 rel="noopener noreferrer"
-                id="hero_webapp_click"
-                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-white hover:bg-slate-50 text-[#111827] hover:text-[#0F382C] font-semibold text-sm sm:text-base border border-slate-200 hover:border-[#00D084] shadow-xs hover:shadow-sm transition-all duration-200 group"
+                id="hero_try_web_click"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-emerald-50/90 hover:bg-emerald-100 text-[#0F382C] font-bold text-sm sm:text-base border border-emerald-200 hover:border-emerald-400 shadow-xs hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 group"
               >
-                <span>Try in Browser</span>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#0F382C] group-hover:translate-x-1 transition-all" />
+                <span>Try on Web</span>
+                <ArrowUpRight className="w-4 h-4 text-emerald-600 group-hover:text-[#0F382C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
             </motion.div>
 
@@ -134,30 +121,7 @@ export const Hero: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Accreditations: Recognised & Supported By KSUM & Startup India */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              className="pt-1 flex flex-wrap items-center gap-3 sm:gap-5"
-            >
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                Recognised & Supported By
-              </span>
-              <div className="flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity">
-                <img
-                  src="/ksum-logo.png"
-                  alt="Kerala Startup Mission"
-                  className="h-5 sm:h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-                />
-                <img
-                  src="/startup-india.png"
-                  alt="Startup India"
-                  className="h-4 sm:h-5 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-                />
-              </div>
-            </motion.div>
-          </div>
+            </div>
 
           {/* ================= RIGHT COLUMN: 3D SMARTPHONE MOCKUP & FLOATING CARDS ================= */}
           <div className="lg:col-span-5 relative flex justify-center items-center py-6 sm:py-8 [perspective:1200px]">

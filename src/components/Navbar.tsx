@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
 
 // Google Play icon SVG
@@ -22,9 +22,9 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Explore', href: '#categories' },
     { label: 'Categories', href: '#categories' },
-    { label: 'For Agents', href: '#agencies' },
+    { label: 'Why Us', href: '#why-us' },
+    { label: 'For Agents', href: '#agent-pro' },
     { label: 'FAQ', href: '#faq' },
   ];
 
@@ -75,20 +75,8 @@ export const Navbar: React.FC = () => {
           ))}
         </nav>
 
-        {/* Action CTAs */}
-        <div className="hidden sm:flex items-center gap-2 sm:gap-2.5">
-          {/* Secondary Outline: Launch Web App */}
-          <a
-            href={BRAND_CONFIG.webAppUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            id="navbar_webapp_cta"
-            className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white hover:bg-slate-50 text-slate-800 hover:text-[#0F382C] text-xs sm:text-sm font-semibold transition-all duration-200 border border-slate-200 hover:border-emerald-400"
-          >
-            <span>Launch Web App</span>
-            <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
-          </a>
-
+        {/* Action CTA */}
+        <div className="hidden sm:flex items-center">
           {/* Primary Solid: Get Mobile App */}
           <a
             href={BRAND_CONFIG.playStoreUrl}
@@ -132,18 +120,7 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="pt-2 space-y-2 border-t border-slate-100">
-            <a
-              href={BRAND_CONFIG.webAppUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 text-xs font-semibold transition-all"
-            >
-              <span>Launch Web App</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500" />
-            </a>
-
+          <div className="pt-2 border-t border-slate-100">
             <a
               href={BRAND_CONFIG.playStoreUrl}
               target="_blank"

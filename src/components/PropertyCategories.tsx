@@ -14,18 +14,19 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const PropertyCategories: React.FC = () => {
   return (
-    <section id="categories" className="py-16 sm:py-24 lg:py-32 bg-white relative">
+    <section id="categories" className="py-16 sm:py-24 lg:py-28 bg-[#FAFCFB] relative border-t border-slate-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-brand-800 text-xs font-bold uppercase tracking-wider">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3.5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[#0F382C] text-[11px] font-extrabold uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
             <span>Property Categories</span>
           </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Explore Properties That Match Your Needs
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Find a Property That Fits You
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-normal">
-            Discover verified residential homes, vacant land plots, commercial buildings, and farm spaces available around your location.
+          <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
+            Explore homes, land, and commercial spaces near you
           </p>
         </div>
 
@@ -39,7 +40,7 @@ export const PropertyCategories: React.FC = () => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
               whileHover={{ y: -5 }}
-              className="min-w-[260px] xs:min-w-[280px] sm:min-w-0 snap-center group relative bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-soft hover:shadow-premium hover:border-emerald-200 transition-all duration-300 flex flex-col justify-between"
+              className="min-w-[260px] xs:min-w-[280px] sm:min-w-0 snap-center group relative bg-white rounded-[26px] border border-slate-200/70 hover:border-emerald-300 overflow-hidden shadow-xs hover:shadow-xl hover:shadow-emerald-950/5 transition-all duration-300 flex flex-col justify-between"
             >
               {/* Category Image Header */}
               <div className="relative h-48 w-full overflow-hidden bg-slate-100">
@@ -76,18 +77,15 @@ export const PropertyCategories: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-emerald-700">
-                    Find on Mobile App
-                  </span>
+                <div className="pt-3.5 border-t border-slate-100/90 flex items-center justify-between">
                   <a
                     href={BRAND_CONFIG.playStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-brand-800 group-hover:text-white flex items-center justify-center text-slate-600 transition-all duration-200"
-                    aria-label={`Explore ${cat.name} in NearbyEstate app`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F382C] hover:text-emerald-600 transition-colors group/link"
                   >
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span>Find on Mobile App</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-emerald-600 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                   </a>
                 </div>
               </div>

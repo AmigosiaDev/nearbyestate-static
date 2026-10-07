@@ -3,14 +3,6 @@ import { ArrowUpRight, MapPin, Globe } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
 import { GooglePlayIcon } from './Navbar';
 
-const InstagramIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-  </svg>
-);
-
 interface FooterProps {
   onOpenLegal: (type: 'privacy' | 'terms') => void;
 }
@@ -41,30 +33,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
             <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold">
               <MapPin className="w-4 h-4 text-brand-accent shrink-0" />
               <span>Available on Android & Web App</span>
-            </div>
-
-            {/* Social Icons */}
-            <div className="pt-1 flex items-center gap-2.5">
-              <a
-                href={BRAND_CONFIG.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
-                aria-label="NearbyEstate on Instagram (@nearestate_)"
-                title="Follow @nearestate_ on Instagram"
-              >
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={BRAND_CONFIG.webAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
-                aria-label="NearbyEstate Web App"
-                title="Open Web App (nearestate.space)"
-              >
-                <Globe className="w-4 h-4" />
-              </a>
             </div>
 
             {/* Backed By Row */}
@@ -102,23 +70,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                 <a href="#categories" className="hover:text-emerald-400 transition-colors">Property Categories</a>
               </li>
               <li>
-                <a href="#features" className="hover:text-emerald-400 transition-colors">Features</a>
-              </li>
-              <li>
-                <a href="#showcase" className="hover:text-emerald-400 transition-colors">Mobile App Showcase</a>
-              </li>
-              <li>
-                <a href="#how-it-works" className="hover:text-emerald-400 transition-colors">How It Works</a>
-              </li>
-              <li>
-                <a href="#agencies" className="hover:text-emerald-400 transition-colors">For Agencies</a>
+                <a href="#why-us" className="hover:text-emerald-400 transition-colors">Why NearbyEstate</a>
               </li>
               <li>
                 <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
               </li>
               <li>
                 <a
-                  href={BRAND_CONFIG.webAppUrl}
+                  href="https://nearbyestate.in/home"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 transition-colors pt-1"
@@ -153,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               </a>
 
               <a
-                href={BRAND_CONFIG.webAppUrl}
+                href="https://nearbyestate.in/home"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/30 text-white font-semibold text-xs transition-all group w-full"
@@ -161,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                 <Globe className="w-4 h-4 text-emerald-400" />
                 <div className="text-left leading-tight">
                   <div className="text-[9px] uppercase text-emerald-300 font-bold">Try Without App</div>
-                  <div className="text-xs font-bold text-white">Open Web Version (nearestate.space)</div>
+                  <div className="text-xs font-bold text-white">Open Web Version (nearbyestate.in)</div>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 ml-auto text-slate-400 group-hover:text-white transition-colors" />
               </a>

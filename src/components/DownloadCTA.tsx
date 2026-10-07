@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Sparkles, QrCode, Smartphone, ArrowUpRight, Star, Globe, Apple, ExternalLink } from 'lucide-react';
+import { ShieldCheck, Sparkles, Smartphone, ArrowUpRight, Star, Globe, Apple, ExternalLink } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
 import { GooglePlayIcon } from './Navbar';
 
@@ -36,7 +36,7 @@ export const DownloadCTA: React.FC = () => {
                 Discover properties around you with NearbyEstate. Available as a dedicated Android app on Google Play or directly in any web browser.
               </p>
 
-              {/* Action Buttons & Desktop QR Code */}
+              {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                 {/* Google Play Button */}
                 <a
@@ -55,7 +55,7 @@ export const DownloadCTA: React.FC = () => {
 
                 {/* Launch Web App Button */}
                 <a
-                  href={BRAND_CONFIG.webAppUrl}
+                  href="https://nearbyestate.in/home"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="bottom_webapp_click"
@@ -70,25 +70,6 @@ export const DownloadCTA: React.FC = () => {
                     </div>
                   </div>
                 </a>
-
-                {/* QR Code Helper for Desktop visitors (xl+) */}
-                <div className="hidden xl:flex items-center gap-3 bg-emerald-950/60 backdrop-blur-md border border-emerald-500/30 px-3.5 py-2.5 rounded-2xl">
-                  <div className="w-10 h-10 bg-white p-1 rounded-xl flex items-center justify-center shrink-0">
-                    <img
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(BRAND_CONFIG.playStoreUrl)}`}
-                      alt="Scan to download on Google Play"
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs font-bold text-white flex items-center gap-1">
-                      <QrCode className="w-3 h-3 text-emerald-400" />
-                      <span>Scan QR</span>
-                    </div>
-                    <div className="text-[10px] text-emerald-300">Google Play</div>
-                  </div>
-                </div>
               </div>
 
               {/* iOS / Safari Support Callout */}
@@ -97,12 +78,12 @@ export const DownloadCTA: React.FC = () => {
                 <span>
                   <strong>On Apple iPhone/iPad?</strong> Open{' '}
                   <a
-                    href={BRAND_CONFIG.webAppUrl}
+                    href="https://nearbyestate.in/home"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline hover:text-white font-semibold"
                   >
-                    nearestate.space
+                    nearbyestate.in/home
                   </a>{' '}
                   in Safari and tap &ldquo;Add to Home Screen&rdquo; to install.
                 </span>
