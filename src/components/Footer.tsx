@@ -16,16 +16,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-emerald-500/15">
           {/* Brand & Description */}
           <div className="sm:col-span-2 md:col-span-5 space-y-4 text-left">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
               <img
                 src="/nearestatelogo.png"
                 alt="NearbyEstate"
-                className="h-8 sm:h-9 w-auto object-contain brightness-0 invert"
+                className="h-8 sm:h-9 w-auto object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
               />
-              <span className="text-xl font-bold tracking-tight text-white">NearbyEstate</span>
             </div>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
@@ -127,14 +126,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           </div>
         </div>
 
-        {/* Copyright & Disclaimer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            © {BRAND_CONFIG.copyrightYear} NearbyEstate. All rights reserved.
-          </div>
-          <div className="text-center sm:text-right">
-            <span>Official marketing landing page for NearbyEstate.</span>
-          </div>
+        {/* Copyright */}
+        <div className="pt-8 text-xs text-slate-500 text-left">
+          © {BRAND_CONFIG.copyrightYear} NearbyEstate. All rights reserved.
         </div>
       </div>
     </footer>
