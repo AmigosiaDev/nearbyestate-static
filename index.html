@@ -3,36 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/icon-512x512.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2D6A4F" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#071F17" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://info.nearbyestate.in/" />
 
     <!-- Primary Meta Tags -->
-    <title>NearbyEstate – Find Properties Around You</title>
-    <meta name="title" content="NearbyEstate – Find Properties Around You" />
-    <meta name="description" content="Discover homes, land, shops, offices and other properties around you with NearbyEstate. Available on Google Play." />
-    <meta name="keywords" content="NearbyEstate, real estate app, properties near me, houses for rent, land for sale, commercial property, shops, offices, farm land, Google Plus Code property" />
+    <title>NearbyEstate – Find Properties Around You | 0% Brokerage Direct Real Estate</title>
+    <meta name="title" content="NearbyEstate – Find Properties Around You | 0% Brokerage Direct Real Estate" />
+    <meta name="description" content="Discover houses, apartments, land plots, commercial buildings, and farm land near you with NearbyEstate. 100% direct owner listings, Google Plus Code precision, zero brokerage. Available on Android & Web." />
+    <meta name="keywords" content="NearbyEstate, real estate app, properties near me, houses for rent, land for sale, commercial property, shops, offices, farm land, Google Plus Code property, direct owner listings, zero brokerage" />
     <meta name="author" content="NearbyEstate" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://nearbyestate.in/" />
-    <meta property="og:title" content="NearbyEstate – Find Properties Around You" />
-    <meta property="og:description" content="Discover homes, land, shops, offices and other properties around you with NearbyEstate." />
-    <meta property="og:image" content="https://nearbyestate.in/assets/icons/icon-512x512.png" />
+    <meta property="og:url" content="https://info.nearbyestate.in/" />
+    <meta property="og:title" content="NearbyEstate – Find Properties Around You | 0% Brokerage" />
+    <meta property="og:description" content="Discover nearby plots, homes, and commercial spaces. Post free listings and connect directly—no middlemen, no brokerage fees." />
+    <meta property="og:image" content="https://info.nearbyestate.in/hero-luxury-villa.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="NearbyEstate" />
+    <meta property="og:locale" content="en_IN" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://nearbyestate.in/" />
-    <meta property="twitter:title" content="NearbyEstate – Find Properties Around You" />
-    <meta property="twitter:description" content="Discover homes, land, shops, offices and other properties around you with NearbyEstate." />
-    <meta property="twitter:image" content="https://nearbyestate.in/assets/icons/icon-512x512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://info.nearbyestate.in/" />
+    <meta name="twitter:title" content="NearbyEstate – Find Properties Around You | 0% Brokerage" />
+    <meta name="twitter:description" content="Discover nearby plots, homes, and commercial spaces. Post free listings and connect directly—no middlemen, no brokerage fees." />
+    <meta name="twitter:image" content="https://info.nearbyestate.in/hero-luxury-villa.jpg" />
+
+    <!-- JSON-LD Structured Data Schema (Google Rich Snippets) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://info.nearbyestate.in/#website",
+            "url": "https://info.nearbyestate.in/",
+            "name": "NearbyEstate",
+            "description": "Location-first real estate platform connecting buyers and property owners directly with zero brokerage.",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://nearbyestate.in/home?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "NearbyEstate",
+            "operatingSystem": "Android, Web",
+            "applicationCategory": "BusinessApplication",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "INR"
+            },
+            "installUrl": "https://play.google.com/store/apps/details?id=com.nearbyestate.nearby_estate"
+          },
+          {
+            "@type": "Organization",
+            "name": "NearbyEstate",
+            "url": "https://nearbyestate.in",
+            "logo": "https://info.nearbyestate.in/nearestatelogo.png",
+            "sameAs": [
+              "https://play.google.com/store/apps/details?id=com.nearbyestate.nearby_estate"
+            ]
+          }
+        ]
+      }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-700 selection:text-white overflow-x-hidden font-sans">
+  <body class="bg-[#071F17] text-white antialiased selection:bg-[#00D084] selection:text-slate-950 overflow-x-hidden font-sans">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
