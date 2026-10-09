@@ -20,7 +20,7 @@ export const App: React.FC = () => {
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | null>(null);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFCFB] text-slate-900 selection:bg-brand-800 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#071F17] text-white selection:bg-[#00D084] selection:text-[#051A12]">
       {/* Sticky Translucent Header */}
       <Navbar />
 

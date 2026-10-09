@@ -6,15 +6,25 @@ import { GooglePlayIcon } from './Navbar';
 
 export const DownloadCTA: React.FC = () => {
   return (
-    <section id="download" className="py-16 sm:py-20 md:py-28 bg-slate-50 relative overflow-hidden">
+    <section id="download" className="py-16 sm:py-20 md:py-28 bg-[#071F17] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-[28px] xs:rounded-[36px] sm:rounded-[40px] bg-gradient-to-br from-brand-900 via-brand-800 to-emerald-950 text-white overflow-hidden p-6 sm:p-10 lg:p-16 shadow-2xl"
+          className="relative rounded-[28px] xs:rounded-[36px] sm:rounded-[40px] bg-gradient-to-br from-[#0F2E23] via-[#0A261D] to-[#071B13] border border-emerald-500/30 text-white overflow-hidden p-6 sm:p-10 lg:p-16 shadow-2xl"
         >
+          {/* Background Sunset Terrace Architecture */}
+          <div className="absolute inset-0 pointer-events-none z-0">
+            <img
+              src="/images/backgrounds/download-cta-bg.jpg"
+              alt="Sunset luxury villa terrace"
+              className="w-full h-full object-cover opacity-20 filter brightness-90 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/90 to-emerald-950/80" />
+          </div>
+
           {/* Decorative glowing backdrops */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-mint/10 rounded-full blur-2xl pointer-events-none" />

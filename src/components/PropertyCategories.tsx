@@ -14,18 +14,58 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const PropertyCategories: React.FC = () => {
   return (
-    <section id="categories" className="py-16 sm:py-24 lg:py-28 bg-[#FAFCFB] relative border-t border-slate-100/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="categories" className="py-16 sm:py-24 lg:py-28 bg-[#071F17] relative overflow-hidden">
+      {/* ================= SEAMLESS MATCHING HERO FOREST GREEN BACKGROUND ================= */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Soft top gradient to ensure 100% continuous flow from Hero */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#071F17] via-[#0A261D] to-[#071F17]" />
+
+        {/* Ambient Emerald & Mint Glows */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] sm:w-[950px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-16 left-1/4 w-80 h-80 bg-[#00D084]/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute bottom-16 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Dotted Grid with Soft Vignette Radial Mask */}
+        <div className="absolute inset-0 map-dotted-grid opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_85%)]" />
+
+        {/* Concentric GPS Radius Rings (1km, 2.5km, 5km) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full border border-dashed border-emerald-400/20 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full border border-dashed border-emerald-400/15 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1050px] h-[1050px] rounded-full border border-dashed border-emerald-400/10 pointer-events-none" />
+
+        {/* Subtle Vector Road Outlines & GPS Coordinate Crosshairs */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-15 stroke-emerald-400"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M-100 150 Q 300 200 600 120 T 1300 250 T 2000 180" strokeWidth="2" />
+          <path d="M-100 450 Q 400 380 900 480 T 1700 420 T 2200 490" strokeWidth="1.8" />
+          <path d="M300 -50 Q 320 300 280 600 T 350 1100" strokeWidth="1.8" />
+          <path d="M850 -50 Q 820 400 880 750 T 830 1100" strokeWidth="1.8" />
+          <path d="M1400 -50 Q 1420 350 1380 700 T 1450 1100" strokeWidth="1.8" />
+          {/* Coordinate Crosshairs */}
+          <g strokeWidth="1.5">
+            <path d="M250 240 v 20 M240 250 h 20" />
+            <path d="M820 180 v 20 M810 190 h 20" />
+            <path d="M1350 260 v 20 M1340 270 h 20" />
+            <path d="M500 520 v 20 M490 530 h 20" />
+            <path d="M1100 540 v 20 M1090 550 h 20" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3.5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[#0F382C] text-[11px] font-extrabold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-[11px] font-extrabold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
             <span>Property Categories</span>
           </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
             Find a Property That Fits You
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-emerald-100/75 font-normal max-w-2xl mx-auto leading-relaxed">
             Explore homes, land, and commercial spaces near you
           </p>
         </div>
@@ -94,9 +134,9 @@ export const PropertyCategories: React.FC = () => {
         </div>
 
         {/* Mobile Touch Swipe Cue */}
-        <div className="flex sm:hidden items-center justify-center gap-1.5 mt-4 text-xs font-semibold text-slate-400">
+        <div className="flex sm:hidden items-center justify-center gap-1.5 mt-4 text-xs font-semibold text-emerald-300/70">
           <span>Swipe to explore all categories</span>
-          <span className="text-brand-700">→</span>
+          <span className="text-emerald-400">→</span>
         </div>
       </div>
     </section>

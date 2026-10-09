@@ -4,7 +4,7 @@ import { Camera, FileText, PhoneCall, ArrowUpRight } from 'lucide-react';
 
 export const AgentProSection: React.FC = () => {
   return (
-    <section id="agent-pro" className="py-16 sm:py-24 bg-[#FAFCFB] relative">
+    <section id="agent-pro" className="py-16 sm:py-24 bg-[#071F17] relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,6 +13,16 @@ export const AgentProSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#0F2A20] via-[#0D231B] to-[#081912] border border-[#00D084]/25 p-8 sm:p-12 lg:p-14 shadow-2xl text-white"
         >
+          {/* Background Commercial Skyscraper Architecture */}
+          <div className="absolute inset-0 pointer-events-none z-0">
+            <img
+              src="/images/backgrounds/agent-pro-bg.jpg"
+              alt="Modern glass commercial architecture"
+              className="w-full h-full object-cover opacity-20 filter brightness-90 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0F2A20] via-[#0F2A20]/90 to-[#081912]/80" />
+          </div>
+
           {/* Ambient Glow */}
           <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#00D084]/20 rounded-full blur-3xl pointer-events-none" />
 

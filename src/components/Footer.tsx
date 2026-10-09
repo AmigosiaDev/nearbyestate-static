@@ -9,9 +9,11 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
   return (
-    <footer className="bg-slate-950 text-white pt-12 sm:pt-16 pb-10 sm:pb-12 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-800">
+    <footer className="bg-[#04120D] text-white pt-12 sm:pt-16 pb-10 sm:pb-12 border-t border-emerald-500/20 relative overflow-hidden">
+      {/* Subtle top ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-emerald-500/15">
           {/* Brand & Description */}
           <div className="sm:col-span-2 md:col-span-5 space-y-4 text-left">
             <div className="flex items-center gap-2">
@@ -35,28 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               <span>Available on Android & Web App</span>
             </div>
 
-            {/* Backed By Row */}
-            <div className="pt-2 space-y-2">
-              <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
-                Recognized & Supported By
-              </div>
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                <div className="bg-white/10 backdrop-blur-xs p-1.5 rounded-lg">
-                  <img
-                    src="/ksum-logo.png"
-                    alt="Kerala Startup Mission"
-                    className="h-5 sm:h-6 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-                <div className="bg-white/10 backdrop-blur-xs p-1.5 rounded-lg">
-                  <img
-                    src="/startup-india.png"
-                    alt="Startup India"
-                    className="h-4 sm:h-5 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              </div>
-            </div>
+
           </div>
 
           {/* Quick Navigation Links */}
