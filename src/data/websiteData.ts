@@ -53,7 +53,7 @@ export const BRAND_CONFIG = {
   title: 'NearbyEstate – Find Properties Around You',
   tagline: 'Find Properties Around You.',
   subtagline: 'Discover homes, land, shops, offices and more with NearbyEstate.',
-  highlightBadge: '100% FREE • UNLIMITED PROPERTY ADS • ZERO BROKERAGE',
+  highlightBadge: '100% FREE • UNLIMITED PROPERTY ADS • DIRECT CONNECT',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=space.nearestate.twa',
   webAppUrl: 'https://nearbyestate.in/home',
   instagramUrl: 'https://www.instagram.com/nearestate_/',
@@ -92,7 +92,7 @@ export const AGENCY_BENEFITS: AgencyBenefit[] = [
     id: 'direct-leads',
     title: 'Direct Client Inquiries',
     subtitle: 'Zero Commission Deductions',
-    description: 'All buyer calls and WhatsApp messages connect straight to your agency phone. NearbyEstate never takes any brokerage cut.',
+    description: 'All buyer calls and WhatsApp messages connect straight to your agency phone. Connect directly with serious buyers.',
     iconName: 'PhoneCall',
     badge: '100% Commission Yours',
   },
@@ -173,7 +173,7 @@ export const WHY_ITEMS: FeatureItem[] = [
   {
     id: 'unlimited-ads',
     title: 'Unlimited Ads for FREE',
-    description: 'Post and advertise unlimited property listings without hidden charges, paywalls, or broker commissions.',
+    description: 'Post and advertise unlimited property listings without hidden charges, paywalls, or listing fees.',
     iconName: 'Sparkles',
     badge: '100% Free',
   },
@@ -239,7 +239,7 @@ export const APP_FEATURES: FeatureItem[] = [
   {
     id: 'direct-contact',
     title: 'Direct Seller Connect',
-    description: 'Connect directly with property owners and sellers without paying hefty middleman brokerage.',
+    description: 'Connect directly with property owners and sellers with zero middleman hurdles.',
     iconName: 'PhoneCall',
     badge: 'Zero Middlemen',
   },
@@ -363,7 +363,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     question: 'Is posting property ads really free on NearbyEstate?',
-    answer: 'Yes, absolutely! NearbyEstate allows you to post Unlimited Ads for FREE. There are no listing fees, no paywalls, and zero broker commissions. Property owners, builders, and agents can advertise as many properties as they need.',
+    answer: 'Yes, absolutely! NearbyEstate allows you to post Unlimited Ads for FREE. There are no listing fees, no paywalls, and no hidden charges. Property owners, builders, and agents can advertise as many properties as they need.',
   },
   {
     question: 'Can I use NearbyEstate without installing the Android app?',

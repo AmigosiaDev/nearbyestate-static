@@ -65,7 +65,7 @@ export const AgencySection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-sm sm:text-base lg:text-lg text-slate-600 font-normal leading-relaxed"
           >
-            Expand your local reach with NearbyEstate. Showcase your entire property portfolio to thousands of nearby buyers, receive direct client inquiries, and build brand presence—100% free with zero brokerage cuts.
+            Expand your local reach with NearbyEstate. Showcase your entire property portfolio to thousands of nearby buyers, receive direct client inquiries, and build brand presence with verified direct reach.
           </motion.p>
         </div>
 

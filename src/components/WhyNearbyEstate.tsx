@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Navigation, Layers, Smartphone, MapPin, CheckCircle2, Sparkles } from 'lucide-react';
+import { Layers, Smartphone, MapPin } from 'lucide-react';
 
 export const WhyNearbyEstate: React.FC = () => {
   return (
@@ -65,144 +65,100 @@ export const WhyNearbyEstate: React.FC = () => {
           </p>
         </div>
 
-        {/* Asymmetric Layout: 1 Large Feature Card + 3 Supporting Cards (1-col on mobile, 3-col on tablet, 1-col on desktop) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
-          {/* LARGE FEATURE CARD: Nearby Discovery */}
+        {/* Centered Vertical Stack: 3 Simple, Balanced Cards */}
+        <div className="max-w-2xl sm:max-w-3xl mx-auto flex flex-col gap-4 sm:gap-5">
+          {/* 1. Nearby Discovery (Turned into a short box like the rest) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-7 bg-gradient-to-br from-[#0F2E23] via-[#0A261D] to-[#071B13] text-white rounded-[28px] sm:rounded-[36px] p-6 sm:p-10 lg:p-12 relative overflow-hidden flex flex-col justify-between shadow-2xl border border-emerald-500/30"
+            transition={{ duration: 0.4, delay: 0.1 }}
+            whileHover={{ y: -3 }}
+            className="bg-gradient-to-br from-[#0D281E] via-[#0A261D] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-[#00D084]/30 hover:border-[#00D084] hover:shadow-2xl hover:shadow-[#00D084]/10 transition-all duration-300 text-left"
           >
-            {/* Background Ambience */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#00D084]/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute inset-0 coordinate-grid opacity-15 pointer-events-none" />
-
-            <div className="space-y-5 sm:space-y-6 relative z-10 text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-                <Navigation className="w-3.5 h-3.5" />
-                <span>Core Innovation</span>
-              </div>
-
-              <h3 className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                Nearby Discovery
-              </h3>
-
-              <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-lg leading-relaxed font-normal">
-                Discover properties plotted around your location. Instead of wading through hundreds of distant, irrelevant listings, see what is physically close to you right now.
-              </p>
-
-              {/* Visual Radar Demonstration inside the card */}
-              <div className="pt-2 sm:pt-4 pb-2">
-                <div className="bg-[#051811]/90 rounded-2xl p-3.5 sm:p-4 border border-emerald-500/25 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-3 sm:gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-emerald-500/20 text-white flex items-center justify-center font-bold shrink-0 border border-emerald-400/30">
-                      <MapPin className="w-4 sm:w-5 h-4 sm:h-5 text-[#00D084]" />
-                    </div>
-                    <div className="text-left">
-                      <div className="text-xs font-bold text-white">Live Proximity Engine</div>
-                      <div className="text-[10px] sm:text-[11px] text-[#00D084] font-mono">Radius: 0 to 15 km search</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] sm:text-xs bg-[#030E0A] px-2.5 sm:px-3 py-1 rounded-lg text-emerald-300 font-mono border border-emerald-500/30 whitespace-nowrap">
-                      1.2 km • 2.5 km • 4.0 km
-                    </span>
-                  </div>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-2xl bg-[#00D084]/15 border border-[#00D084]/30 shadow-xs flex items-center justify-center text-[#00D084] shrink-0">
+                  <MapPin className="w-5 h-5 text-[#00D084]" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Find What's Near You</h3>
+                  <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                    Near You
+                  </span>
                 </div>
               </div>
+
+              {/* Live Search Radius Tag */}
+              <div className="hidden xs:flex items-center gap-2 self-start sm:self-auto bg-[#051811] px-3 py-1.5 rounded-xl border border-emerald-500/20 text-[11px] font-mono text-emerald-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
+                <span>1 km • 3 km • 5 km nearby</span>
+              </div>
             </div>
 
-            <div className="pt-6 sm:pt-8 border-t border-emerald-500/20 flex items-center justify-between text-xs text-[#00D084] font-semibold relative z-10">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 shrink-0" />
-                <span>Accurate Device Location Matching</span>
-              </div>
-              <span className="w-2 h-2 rounded-full bg-[#00D084] animate-pulse shrink-0" />
-            </div>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal sm:pl-14">
+              See houses, land, and shops close to your location instead of places far away.
+            </p>
           </motion.div>
 
-          {/* 3 SUPPORTING CARDS: Responsive Tablet 3-col Grid */}
-          <div className="lg:col-span-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-5 sm:gap-6">
-            {/* Supporting Card 1: Unlimited Ads for FREE (Key USP from old site) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -3 }}
-              className="bg-gradient-to-br from-[#0D281E] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-[#00D084]/35 hover:border-[#00D084] hover:shadow-xl transition-all duration-300 text-left flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3.5 mb-3">
-                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-[#00D084]/15 border border-[#00D084]/30 shadow-xs flex items-center justify-center text-[#00D084] shrink-0">
-                    <Sparkles className="w-5 sm:w-6 h-5 sm:h-6 text-[#00D084]" />
-                  </div>
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white">Unlimited Ads for FREE</h4>
-                    <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">
-                      100% Free • ₹0 Listing Fee
-                    </span>
-                  </div>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Post and advertise as many properties as you need with zero listing fees, zero subscription paywalls, and no broker cuts.
-                </p>
+          {/* 2. Multiple Types */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            whileHover={{ y: -3 }}
+            className="bg-gradient-to-br from-[#0D281E] via-[#0A261D] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-emerald-500/25 hover:border-emerald-400/50 hover:shadow-2xl transition-all duration-300 text-left"
+          >
+            <div className="flex items-center gap-3.5 mb-3">
+              <div className="w-11 h-11 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 shadow-xs flex items-center justify-center text-emerald-400 shrink-0">
+                <Layers className="w-5 h-5 text-emerald-400" />
               </div>
-            </motion.div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white">All Property Types</h3>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                  All In One
+                </span>
+              </div>
+            </div>
 
-            {/* Supporting Card 2: Multiple Property Types */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -3 }}
-              className="bg-gradient-to-br from-[#0D281E] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-emerald-500/20 hover:border-emerald-400/40 hover:shadow-xl transition-all duration-300 text-left flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3.5 mb-3">
-                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 shadow-xs flex items-center justify-center text-emerald-400 shrink-0">
-                    <Layers className="w-5 sm:w-6 h-5 sm:h-6 text-emerald-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white">Multiple Types</h4>
-                    <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300">Unified Catalog</span>
-                  </div>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Explore residential houses, apartments, land plots, commercial buildings, retail shops, and farm land all under one roof.
-                </p>
-              </div>
-            </motion.div>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal sm:pl-14">
+              Houses, apartments, plots, shops, and offices — all in one simple place.
+            </p>
+          </motion.div>
 
-            {/* Supporting Card 3: Mobile & Web Accessibility */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -3 }}
-              className="bg-gradient-to-br from-[#0D281E] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-emerald-500/20 hover:border-emerald-400/40 hover:shadow-xl transition-all duration-300 text-left flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3.5 mb-3">
-                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 shadow-xs flex items-center justify-center text-emerald-400 shrink-0">
-                    <Smartphone className="w-5 sm:w-6 h-5 sm:h-6 text-emerald-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white">Play Store & Web App</h4>
-                    <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300">Android & Browser</span>
-                  </div>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  Enjoy blazing-fast on-device GPS discovery on Android, or explore instantly from any desktop or iPhone browser without installing.
-                </p>
+          {/* 3. Play Store & Web App */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            whileHover={{ y: -3 }}
+            className="bg-gradient-to-br from-[#0D281E] via-[#0A261D] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-emerald-500/25 hover:border-emerald-400/50 hover:shadow-2xl transition-all duration-300 text-left"
+          >
+            <div className="flex items-center gap-3.5 mb-3">
+              <div className="w-11 h-11 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 shadow-xs flex items-center justify-center text-emerald-400 shrink-0">
+                <Smartphone className="w-5 h-5 text-emerald-400" />
               </div>
-            </motion.div>
-          </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white">Use on Mobile or Web</h3>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                  App & Website
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal sm:pl-14">
+              Download on Google Play Store, or browse directly on our website without installing.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Bottom Tagline Banner */}
+        <div className="mt-8 sm:mt-10 pt-6 border-t border-emerald-500/20 text-center">
+          <p className="text-xs sm:text-sm font-semibold text-[#00D084] tracking-wide uppercase">
+            Less Searching. More Relevant Properties. Direct Connection.
+          </p>
         </div>
       </div>
     </section>

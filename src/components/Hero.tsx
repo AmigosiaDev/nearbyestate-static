@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
               className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-xl leading-relaxed font-normal"
             >
-              Discover nearby plots, homes, and commercial spaces. Post free listings and connect directly—no middlemen, no brokerage fees.
+              Discover nearby plots, homes, and commercial spaces. Post free listings and connect directly with verified owners.
             </motion.p>
 
             {/* Dual CTA Group */}
@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
                 <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-[#00D084] shrink-0">
                   <ShieldCheck className="w-3 h-3 text-[#00D084]" />
                 </div>
-                <span className="font-semibold text-white">Zero Brokerage</span>
+                <span className="font-semibold text-white">Direct Connect</span>
               </div>
             </motion.div>
 

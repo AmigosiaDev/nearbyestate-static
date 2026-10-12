@@ -10,7 +10,6 @@ import { WhyNearbyEstate } from './components/WhyNearbyEstate';
 // import { UseCases } from './components/UseCases';
 // import { AgencySection } from './components/AgencySection';
 import { AgentProSection } from './components/AgentProSection';
-import { DownloadCTA } from './components/DownloadCTA';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
@@ -35,11 +34,10 @@ export const App: React.FC = () => {
         {/* 3. Core Value Pillars */}
         <WhyNearbyEstate />
 
-        {/* 4. For Agencies & Brokers (Agent Pro Subscription) */}
+        {/* 4. Unified Verified Agents & App Discovery Section */}
         <AgentProSection />
 
-        {/* 5. Download CTA Banner */}
-        <DownloadCTA />
+        {/* 5. Frequently Asked Questions */}
 
         {/* 6. Frequently Asked Questions */}
         <FAQ />
