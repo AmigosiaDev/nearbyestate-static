@@ -18,6 +18,18 @@ import { BRAND_CONFIG } from '../data/websiteData';
 import { GooglePlayIcon } from './Navbar';
 
 export const Hero: React.FC = () => {
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    const updateMatch = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDesktop(e.matches);
+    };
+    setIsDesktop(mediaQuery.matches);
+    mediaQuery.addEventListener('change', updateMatch);
+    return () => mediaQuery.removeEventListener('change', updateMatch);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -131,56 +143,76 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* ================= RIGHT COLUMN: 3D SMARTPHONE MOCKUP & FLOATING CARDS ================= */}
-          <div className="lg:col-span-5 relative flex justify-center items-center py-6 sm:py-8 [perspective:1400px]">
+          <div className="lg:col-span-5 relative flex flex-col justify-center items-center py-6 sm:py-8 lg:[perspective:1400px] w-full">
             {/* Ambient Radiant Emerald Backlight Glow casting on villa */}
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-80 sm:w-[380px] h-[540px] bg-[#00D084]/35 blur-[65px] rounded-full pointer-events-none -z-10 animate-pulse"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[380px] h-[500px] sm:h-[540px] bg-[#00D084]/35 blur-[65px] rounded-full pointer-events-none -z-10 animate-pulse"
               style={{ animationDuration: '4s' }}
             />
             <div className="absolute top-1/3 right-0 w-64 h-80 bg-emerald-400/30 blur-[50px] rounded-full pointer-events-none -z-10" />
 
-            {/* Deep Directional Cast Grounding Shadow on Villa Wall */}
-            <motion.div
-              animate={{
-                y: [0, -14, 0],
-                scale: [1, 0.97, 1],
-                opacity: [0.85, 0.7, 0.85],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="absolute top-14 left-4 w-[280px] xs:w-[310px] sm:w-[330px] lg:w-[345px] h-[580px] xs:h-[630px] sm:h-[670px] bg-black/90 blur-[40px] rounded-[60px] transform-gpu -translate-x-12 translate-y-14 rotate-[13deg] pointer-events-none -z-10"
-            />
+            {/* Deep Directional Cast Grounding Shadow (Desktop 3D Angle) */}
+            {isDesktop && (
+              <motion.div
+                animate={{
+                  y: [0, -14, 0],
+                  scale: [1, 0.97, 1],
+                  opacity: [0.85, 0.7, 0.85],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="absolute top-14 left-4 w-[280px] xs:w-[310px] sm:w-[330px] lg:w-[345px] h-[580px] xs:h-[630px] sm:h-[670px] bg-black/90 blur-[40px] rounded-[60px] transform-gpu -translate-x-12 translate-y-14 rotate-[13deg] pointer-events-none -z-10"
+              />
+            )}
 
-            {/* Photorealistic 3D Flagship Smartphone with Solid Titanium Extrusion & Continuous Levitation */}
+            {/* Smartphone Mockup with 3D Extrusion on Desktop & Clean Upright Alignment on Mobile */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{
-                opacity: 1,
-                y: [0, -14, 0],
-                rotateZ: [13.5, 15, 13.5],
-                rotateX: [13, 15, 13],
-                rotateY: [-17, -19, -17],
-              }}
-              transition={{
-                opacity: { duration: 0.8, ease: 'easeOut' },
-                y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
-                rotateZ: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
-                rotateX: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
-                rotateY: { duration: 6.5, repeat: Infinity, ease: 'easeInOut' },
-              }}
+              animate={
+                isDesktop
+                  ? {
+                      opacity: 1,
+                      y: [0, -14, 0],
+                      rotateZ: [13.5, 15, 13.5],
+                      rotateX: [13, 15, 13],
+                      rotateY: [-17, -19, -17],
+                    }
+                  : {
+                      opacity: 1,
+                      y: [0, -8, 0],
+                      rotateZ: 0,
+                      rotateX: 0,
+                      rotateY: 0,
+                    }
+              }
+              transition={
+                isDesktop
+                  ? {
+                      opacity: { duration: 0.8, ease: 'easeOut' },
+                      y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
+                      rotateZ: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
+                      rotateX: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
+                      rotateY: { duration: 6.5, repeat: Infinity, ease: 'easeInOut' },
+                    }
+                  : {
+                      opacity: { duration: 0.8, ease: 'easeOut' },
+                      y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+                    }
+              }
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.3 },
               }}
               style={{
                 transformStyle: 'preserve-3d',
-                boxShadow:
-                  '1px 1px 0px #475569, 2px 2px 0px #334155, 3px 3px 0px #334155, 4px 4px 0px #1e293b, 5px 5px 0px #1e293b, 6px 6px 0px #0f172a, 7px 7px 0px #0f172a, 8px 8px 0px #020617, 9px 9px 0px #020617, -25px 45px 65px -10px rgba(0,0,0,0.9), -12px 25px 35px -5px rgba(0,0,0,0.75), 0px 0px 55px 8px rgba(0,208,132,0.38)',
+                boxShadow: isDesktop
+                  ? '1px 1px 0px #475569, 2px 2px 0px #334155, 3px 3px 0px #334155, 4px 4px 0px #1e293b, 5px 5px 0px #1e293b, 6px 6px 0px #0f172a, 7px 7px 0px #0f172a, 8px 8px 0px #020617, 9px 9px 0px #020617, -25px 45px 65px -10px rgba(0,0,0,0.9), -12px 25px 35px -5px rgba(0,0,0,0.75), 0px 0px 55px 8px rgba(0,208,132,0.38)'
+                  : '0 20px 45px -10px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 208, 132, 0.25)',
               }}
-              className="relative z-20 w-full max-w-[285px] xs:max-w-[320px] sm:max-w-[340px] lg:max-w-[355px] h-[585px] xs:h-[635px] sm:h-[675px] bg-[#0B1120] rounded-[48px] xs:rounded-[52px] p-2.5 xs:p-3 border-[4.5px] border-slate-600/90 border-t-slate-400/90 border-l-slate-400/90 border-r-slate-800 border-b-slate-900 mx-auto cursor-pointer group/phone select-none"
+              className="relative z-20 w-full max-w-[280px] xs:max-w-[310px] sm:max-w-[335px] lg:max-w-[355px] h-[570px] xs:h-[620px] sm:h-[660px] lg:h-[675px] bg-[#0B1120] rounded-[44px] xs:rounded-[48px] sm:rounded-[52px] p-2.5 xs:p-3 border-[4.5px] border-slate-600/90 border-t-slate-400/90 border-l-slate-400/90 border-r-slate-800 border-b-slate-900 mx-auto cursor-pointer group/phone select-none"
             >
               {/* Left Titanium Frame Buttons: Action Button & Volume Rockers */}
               <div className="absolute -left-[6px] top-28 w-[3.5px] h-7 bg-slate-400 rounded-l-sm shadow-xs pointer-events-none" />
@@ -314,22 +346,22 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* ================= FLOATING FROSTED GLASS BADGES OVERLAPPING PHONE ================= */}
+              {/* ================= FLOATING FROSTED GLASS BADGES OVERLAPPING PHONE (Desktop only) ================= */}
               {/* Tag 1 (Top-Left): "Verified Owner • 0% Fee" */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-                className="absolute top-20 -left-6 sm:-left-10 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full shadow-2xl border border-white/80 pointer-events-none whitespace-nowrap"
+                className="absolute top-20 -left-6 sm:-left-10 z-30 hidden lg:flex items-center gap-2 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full shadow-2xl border border-white/80 pointer-events-none whitespace-nowrap"
               >
                 <span className="w-2 h-2 rounded-full bg-[#00D084]" />
                 <span className="text-xs font-bold text-slate-900">Verified Owner • 0% Fee</span>
               </motion.div>
 
-              {/* Tag 2 (Bottom-Right): "Verified Owner • 0% Fee" matching mockup screenshot */}
+              {/* Tag 2 (Bottom-Right): "Verified Owner • 0% Fee" */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute bottom-20 -right-6 sm:-right-10 z-30 flex items-center gap-2 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full shadow-2xl border border-white/80 pointer-events-none whitespace-nowrap"
+                className="absolute bottom-20 -right-6 sm:-right-10 z-30 hidden lg:flex items-center gap-2 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full shadow-2xl border border-white/80 pointer-events-none whitespace-nowrap"
               >
                 <span className="w-2 h-2 rounded-full bg-[#00D084]" />
                 <span className="text-xs font-bold text-slate-900">Verified Owner • 0% Fee</span>
@@ -337,8 +369,8 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             {/* Mobile & Tablet Pill Tags Strip */}
-            <div className="flex sm:hidden flex-wrap items-center justify-center gap-2 mt-5 z-20 w-full px-2">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-semibold text-slate-800">
+            <div className="flex lg:hidden flex-wrap items-center justify-center gap-2 mt-5 z-20 w-full px-2">
+              <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-semibold text-slate-800">
                 <Check className="w-3.5 h-3.5 text-[#00D084] stroke-[3]" />
                 <span>Verified Owner • 0% Fee</span>
               </div>
