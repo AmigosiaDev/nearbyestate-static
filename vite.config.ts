@@ -48,10 +48,10 @@ export default defineConfig(({ mode }) => {
                     return
                   }
 
-                  if (message.length > 50) {
+                  if (message.length > 100) {
                     res.statusCode = 422
                     res.setHeader('Content-Type', 'application/json')
-                    res.end(JSON.stringify({ error: 'Message cannot exceed 50 characters.' }))
+                    res.end(JSON.stringify({ error: 'Message cannot exceed 100 characters.' }))
                     return
                   }
 

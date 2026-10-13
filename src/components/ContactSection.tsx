@@ -48,14 +48,14 @@ export const ContactSection: React.FC = () => {
       }
     }
 
-    // Validate Message (max 50 characters)
+    // Validate Message (max 100 characters)
     if (!formData.message.trim()) {
-      setErrorMessage('Please enter your message (up to 50 characters).');
+      setErrorMessage('Please enter your message (up to 100 characters).');
       return;
     }
 
-    if (formData.message.length > 50) {
-      setErrorMessage('Message cannot exceed 50 characters.');
+    if (formData.message.length > 100) {
+      setErrorMessage('Message cannot exceed 100 characters.');
       return;
     }
 
@@ -264,11 +264,11 @@ export const ContactSection: React.FC = () => {
                   <span>Your Message</span>
                   <div className="flex items-center gap-2">
                     <span className={`text-[11px] font-mono transition-colors ${
-                      formData.message.length >= 50
+                      formData.message.length >= 100
                         ? 'text-amber-400 font-bold'
                         : 'text-slate-400'
                     }`}>
-                      {formData.message.length}/50
+                      {formData.message.length}/100
                     </span>
                     <span className="text-[#00D084] text-[11px]">* Required</span>
                   </div>
@@ -277,14 +277,14 @@ export const ContactSection: React.FC = () => {
                   id="message"
                   required
                   rows={3}
-                  maxLength={50}
+                  maxLength={100}
                   value={formData.message}
                   onChange={(e) => {
-                    const val = e.target.value.slice(0, 50);
+                    const val = e.target.value.slice(0, 100);
                     setFormData({ ...formData, message: val });
                     if (errorMessage) setErrorMessage(null);
                   }}
-                  placeholder="Tell us what you're looking for (max 50 chars)..."
+                  placeholder="Tell us what you're looking for (max 100 chars)..."
                   className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D084] focus:ring-1 focus:ring-[#00D084] transition-all resize-none leading-relaxed"
                 />
               </div>

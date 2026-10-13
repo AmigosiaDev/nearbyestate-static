@@ -57,10 +57,10 @@ if (!empty($emailAddress)) {
     }
 }
 
-// Enforce message length up to 50 characters
-if (mb_strlen($message) > 50) {
+// Enforce message length up to 100 characters
+if (mb_strlen($message) > 100) {
     http_response_code(422);
-    echo json_encode(['error' => 'Message cannot exceed 50 characters.']);
+    echo json_encode(['error' => 'Message cannot exceed 100 characters.']);
     exit;
 }
 
