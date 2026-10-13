@@ -34,6 +34,36 @@ if (empty($fullName) || empty($phoneNumber) || empty($message)) {
     exit;
 }
 
+// Enforce letters only for full name
+if (!preg_match('/^[a-zA-Z\s]+$/', $fullName)) {
+    http_response_code(422);
+    echo json_encode(['error' => 'Full Name can only contain letters.']);
+    exit;
+}
+
+// Enforce digits only for phone number
+if (!preg_match('/^\d+$/', $phoneNumber) || strlen($phoneNumber) < 7) {
+    http_response_code(422);
+    echo json_encode(['error' => 'Phone Number can only contain numbers (min 7 digits).']);
+    exit;
+}
+
+// Enforce email with @ and . if provided
+if (!empty($emailAddress)) {
+    if (strpos($emailAddress, '@') === false || strpos($emailAddress, '.') === false || !filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(422);
+        echo json_encode(['error' => 'Email must contain @ and a valid domain.']);
+        exit;
+    }
+}
+
+// Enforce message length up to 50 characters
+if (mb_strlen($message) > 50) {
+    http_response_code(422);
+    echo json_encode(['error' => 'Message cannot exceed 50 characters.']);
+    exit;
+}
+
 // Load config if available
 $configFile = __DIR__ . '/config.php';
 if (file_exists($configFile)) {

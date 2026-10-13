@@ -14,11 +14,52 @@ export const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage(null);
+    setEmailError(null);
+
+    // Validate Full Name (letters only)
+    const cleanName = formData.fullName.trim();
+    if (!cleanName || !/^[a-zA-Z\s]+$/.test(cleanName)) {
+      setErrorMessage('Please enter your full name (letters only).');
+      return;
+    }
+
+    // Validate Phone Number (numbers only)
+    const cleanPhone = formData.phoneNumber.trim();
+    if (!cleanPhone || cleanPhone.length < 7 || !/^\d+$/.test(cleanPhone)) {
+      setErrorMessage('Please enter a valid phone number (numbers only, at least 7 digits).');
+      return;
+    }
+
+    // Validate Email Address (must contain @ and .)
+    if (formData.emailAddress.trim()) {
+      if (!isValidEmail(formData.emailAddress.trim())) {
+        setEmailError("Email must contain '@' and '.' (e.g. name@example.com)");
+        setErrorMessage("Please enter a valid email address containing '@' and '.'");
+        return;
+      }
+    }
+
+    // Validate Message (max 50 characters)
+    if (!formData.message.trim()) {
+      setErrorMessage('Please enter your message (up to 50 characters).');
+      return;
+    }
+
+    if (formData.message.length > 50) {
+      setErrorMessage('Message cannot exceed 50 characters.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const res = await fetch('/api/contact.php', {
@@ -115,8 +156,13 @@ export const ContactSection: React.FC = () => {
                     type="text"
                     required
                     value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="Enter your full name"
+                    onChange={(e) => {
+                      // Only alphabetic characters and spaces allowed; numeric & symbols stripped immediately
+                      const cleanVal = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+                      setFormData({ ...formData, fullName: cleanVal });
+                      if (errorMessage) setErrorMessage(null);
+                    }}
+                    placeholder="Enter your full name (letters only)"
                     className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D084] focus:ring-1 focus:ring-[#00D084] transition-all"
                   />
                 </div>
@@ -129,10 +175,16 @@ export const ContactSection: React.FC = () => {
                   <input
                     id="phoneNumber"
                     type="tel"
+                    inputMode="numeric"
                     required
                     value={formData.phoneNumber}
-                    onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                    placeholder="+91 98765 43210"
+                    onChange={(e) => {
+                      // Only numeric digits allowed; alphabetic characters stripped immediately
+                      const cleanVal = e.target.value.replace(/\D/g, '').slice(0, 15);
+                      setFormData({ ...formData, phoneNumber: cleanVal });
+                      if (errorMessage) setErrorMessage(null);
+                    }}
+                    placeholder="Enter phone number (numbers only)"
                     className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D084] focus:ring-1 focus:ring-[#00D084] transition-all font-mono"
                   />
                 </div>
@@ -149,10 +201,36 @@ export const ContactSection: React.FC = () => {
                     id="emailAddress"
                     type="email"
                     value={formData.emailAddress}
-                    onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setFormData({ ...formData, emailAddress: val });
+                      if (emailError && (val === '' || isValidEmail(val))) {
+                        setEmailError(null);
+                      }
+                      if (errorMessage) setErrorMessage(null);
+                    }}
+                    onBlur={() => {
+                      if (formData.emailAddress.trim()) {
+                        if (!isValidEmail(formData.emailAddress.trim())) {
+                          setEmailError("Email must contain '@' and '.' (e.g. name@example.com)");
+                        } else {
+                          setEmailError(null);
+                        }
+                      } else {
+                        setEmailError(null);
+                      }
+                    }}
                     placeholder="name@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D084] focus:ring-1 focus:ring-[#00D084] transition-all"
+                    className={`w-full px-4 py-3 rounded-xl bg-white/[0.04] border ${
+                      emailError ? 'border-red-500/60 focus:border-red-400 focus:ring-red-400' : 'border-white/10 focus:border-[#00D084] focus:ring-[#00D084]'
+                    } text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-1 transition-all`}
                   />
+                  {emailError && (
+                    <p className="text-[11px] text-red-400 flex items-center gap-1.5 pt-0.5">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{emailError}</span>
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-1.5">
@@ -184,15 +262,29 @@ export const ContactSection: React.FC = () => {
               <div className="space-y-1.5">
                 <label htmlFor="message" className="text-xs font-semibold text-slate-200 flex items-center justify-between">
                   <span>Your Message</span>
-                  <span className="text-[#00D084] text-[11px]">* Required</span>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[11px] font-mono transition-colors ${
+                      formData.message.length >= 50
+                        ? 'text-amber-400 font-bold'
+                        : 'text-slate-400'
+                    }`}>
+                      {formData.message.length}/50
+                    </span>
+                    <span className="text-[#00D084] text-[11px]">* Required</span>
+                  </div>
                 </label>
                 <textarea
                   id="message"
                   required
                   rows={3}
+                  maxLength={50}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell us what you're looking for or how we can assist..."
+                  onChange={(e) => {
+                    const val = e.target.value.slice(0, 50);
+                    setFormData({ ...formData, message: val });
+                    if (errorMessage) setErrorMessage(null);
+                  }}
+                  placeholder="Tell us what you're looking for (max 50 chars)..."
                   className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D084] focus:ring-1 focus:ring-[#00D084] transition-all resize-none leading-relaxed"
                 />
               </div>

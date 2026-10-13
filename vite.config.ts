@@ -27,6 +27,34 @@ export default defineConfig(({ mode }) => {
                     return
                   }
 
+                  if (!/^[a-zA-Z\s]+$/.test(fullName)) {
+                    res.statusCode = 422
+                    res.setHeader('Content-Type', 'application/json')
+                    res.end(JSON.stringify({ error: 'Full Name can only contain letters.' }))
+                    return
+                  }
+
+                  if (!/^\d+$/.test(phoneNumber) || phoneNumber.length < 7) {
+                    res.statusCode = 422
+                    res.setHeader('Content-Type', 'application/json')
+                    res.end(JSON.stringify({ error: 'Phone Number can only contain numbers (min 7 digits).' }))
+                    return
+                  }
+
+                  if (emailAddress && (!emailAddress.includes('@') || !emailAddress.includes('.') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress))) {
+                    res.statusCode = 422
+                    res.setHeader('Content-Type', 'application/json')
+                    res.end(JSON.stringify({ error: 'Email must contain @ and a valid domain.' }))
+                    return
+                  }
+
+                  if (message.length > 50) {
+                    res.statusCode = 422
+                    res.setHeader('Content-Type', 'application/json')
+                    res.end(JSON.stringify({ error: 'Message cannot exceed 50 characters.' }))
+                    return
+                  }
+
                   const apiKey = env.RESEND_API_KEY || process.env.RESEND_API_KEY
                   const toEmail = env.CONTACT_NOTIFICATION_EMAIL || process.env.CONTACT_NOTIFICATION_EMAIL || 'sayyidnishasns200@gmail.com'
 
