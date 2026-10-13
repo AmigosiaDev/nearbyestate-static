@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
             </div>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              Discover properties around you with NearbyEstate. The location-first mobile platform for houses, apartments, land, commercial shops, and offices. Unlimited property ads 100% for free.
+              Discover properties around you with NearbyEstate. The location-first mobile platform for houses, apartments, land, commercial shops, and offices. Free property ads.
             </p>
 
             <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold">
@@ -128,7 +128,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
         {/* Copyright */}
         <div className="pt-8 text-xs text-slate-500 text-left">
-          © {BRAND_CONFIG.copyrightYear} NearbyEstate. All rights reserved.
+          © {BRAND_CONFIG.copyrightYear} NearbyEstate • Amigosia Pvt. All rights reserved.
         </div>
       </div>
     </footer>

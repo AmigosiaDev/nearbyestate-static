@@ -50,10 +50,11 @@ export interface FAQItem {
 
 export const BRAND_CONFIG = {
   name: 'NearbyEstate',
+  companyName: 'Amigosia Pvt',
   title: 'NearbyEstate – Find Properties Around You',
   tagline: 'Find Properties Around You.',
   subtagline: 'Discover homes, land, shops, offices and more with NearbyEstate.',
-  highlightBadge: '100% FREE • UNLIMITED PROPERTY ADS • DIRECT CONNECT',
+  highlightBadge: '100% FREE • PROPERTY ADS • DIRECT LEAD',
   playStoreUrl: 'https://play.google.com/store/apps/details?id=space.nearestate.twa',
   webAppUrl: 'https://nearbyestate.in/home',
   instagramUrl: 'https://www.instagram.com/nearestate_/',
