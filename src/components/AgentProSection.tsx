@@ -1,189 +1,286 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, ArrowUpRight, Globe, ExternalLink, MapPin } from 'lucide-react';
+import { Check, ArrowUpRight, ShieldCheck, MapPin, Sparkles } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
-import { GooglePlayIcon } from './Navbar';
 
 export const AgentProSection: React.FC = () => {
+  const whatsappBase = 'https://wa.me/919946465431?text=';
+
+  const starterWhatsAppUrl = `${whatsappBase}${encodeURIComponent(
+    'Hello NearbyEstate, I want to claim the Free 1-Month Starter Plan (1 free post).'
+  )}`;
+
+  const growthWhatsAppUrl = `${whatsappBase}${encodeURIComponent(
+    'Hello NearbyEstate, I want to subscribe to the ₹99 Growth Plan (3 properties, 3 months).'
+  )}`;
+
+  const agencyWhatsAppUrl = BRAND_CONFIG.agencyWhatsAppUrl || `${whatsappBase}${encodeURIComponent(
+    'Hello NearbyEstate, I want to register as a Verified Agent (₹499 Agency Pro, 20 properties).'
+  )}`;
+
   return (
-    <section id="pricing" className="py-12 sm:py-16 lg:py-20 bg-[#071F17] relative overflow-hidden">
-      {/* Anchor for download navigation if needed */}
-      <div id="download" className="sr-only" />
+    <section id="agent-pro" className="py-14 sm:py-20 lg:py-24 bg-[#071F17] relative overflow-hidden text-white">
+      {/* Anchor for pricing navigation */}
+      <div id="pricing" className="sr-only" />
 
-      <div className="max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative rounded-[28px] bg-gradient-to-br from-[#0C2B20]/95 via-[#0A261C]/95 to-[#071E16]/95 border border-[#00D084]/20 p-8 sm:p-10 lg:p-12 shadow-2xl overflow-hidden text-white"
-        >
-          {/* Ambient background depth glows */}
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#00D084]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-[#00D084]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient background depth glows */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-[#00D084]/10 blur-[130px] rounded-full" />
+        <div className="absolute bottom-10 right-10 w-[450px] h-[350px] bg-emerald-700/10 blur-[100px] rounded-full" />
+        <div className="absolute inset-0 coordinate-grid opacity-25" />
+      </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start relative z-10">
-            {/* ================= LEFT COLUMN: VERIFIED AGENCY PLAN ================= */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              {/* Headline & Supporting Headline */}
-              <div className="space-y-1.5">
-                <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-white tracking-tight leading-tight">
-                  Grow Your Real Estate Agency.
-                </h2>
-                <div className="text-lg sm:text-2xl lg:text-[26px] font-bold text-[#00D084] tracking-tight">
-                  Get Verified. Connect Directly.
-                </div>
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00D084]/15 border border-[#00D084]/30 text-[#00D084] text-xs font-bold tracking-wide uppercase">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Agent & Property Plans</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight">
+            List Properties. <span className="text-[#00D084]">Connect Directly.</span>
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Choose a flexible plan tailored to your needs. Showcase your properties with exact Google Plus Code locations and direct WhatsApp leads.
+          </p>
+        </div>
+
+        {/* 3-Column Pricing Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          
+          {/* ================= PLAN 1: FREE STARTER (₹0) ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="rounded-3xl bg-[#0A261D]/80 backdrop-blur-xl border border-white/10 p-7 lg:p-8 flex flex-col justify-between hover:border-[#00D084]/40 transition-all duration-300 shadow-xl group"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                  Free Starter
+                </span>
+                <span className="text-xs text-slate-400 font-medium">1 Month Validity</span>
               </div>
 
-              {/* Description */}
-              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-xl">
-                Create your verified agency profile, showcase your properties, and connect directly with buyers through WhatsApp and phone.
-              </p>
-
-              {/* 4 Compact Benefits */}
-              <ul className="space-y-3 pt-1 text-sm sm:text-base text-slate-200">
-                <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
-                  </div>
-                  <span>Verified agency profile</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
-                  </div>
-                  <span>Direct WhatsApp and phone contacts</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
-                  </div>
-                  <span>Up to 20 property listings</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
-                  </div>
-                  <span>Admin-reviewed property listings</span>
-                </li>
-              </ul>
-
-              {/* Pricing & CTA */}
-              <div className="pt-2 space-y-4">
-                <div className="flex flex-wrap items-baseline gap-2.5">
-                  <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹499</span>
-                  <span className="text-base text-slate-300 font-medium">/ 6 months</span>
-                  <span className="text-xs text-emerald-300 bg-emerald-500/15 border border-emerald-500/25 px-2.5 py-0.5 rounded-full font-medium ml-1">
-                    Up to 20 property listings
-                  </span>
+              <div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹0</span>
+                  <span className="text-slate-400 text-sm font-medium">/ 1 month</span>
                 </div>
-
-                <div className="space-y-2">
-                  <a
-                    href={BRAND_CONFIG.agencyWhatsAppUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id="agent_pro_subscribe_click"
-                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#00D084] hover:bg-[#00b875] text-[#051A12] font-extrabold text-sm sm:text-base shadow-lg shadow-[#00D084]/20 transition-all duration-200 transform hover:-translate-y-0.5"
-                  >
-                    <span>Register as a Verified Agent</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                  <p className="text-xs text-slate-400">
-                    Activation after admin verification
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* ================= RIGHT COLUMN: NEARBYESTATE APP ================= */}
-            <div className="lg:col-span-5 flex flex-col space-y-5 text-left">
-              {/* Headline & Description */}
-              <div className="space-y-2">
-                <h3 className="text-xl sm:text-2xl lg:text-[28px] font-bold text-white tracking-tight leading-snug">
-                  Your Next Property Could Be Closer Than You Think.
-                </h3>
-                <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                  Discover nearby properties with NearbyEstate. Use our Android app or browse directly on the web.
+                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Test NearbyEstate and get your first local property in front of nearby buyers.
                 </p>
               </div>
 
-              {/* Two Clear Actions directly below description */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                {/* Get it on Google Play */}
-                <a
-                  href={BRAND_CONFIG.playStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="bottom_download_click"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
-                >
-                  <GooglePlayIcon className="w-4 h-4 fill-current text-slate-900" />
-                  <span>Get it on Google Play</span>
-                </a>
-
-                {/* Explore on Web */}
-                <a
-                  href="https://nearbyestate.in/home"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="bottom_webapp_click"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs border border-white/15 shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
-                >
-                  <Globe className="w-3.5 h-3.5 text-[#00D084]" />
-                  <span>Explore on Web</span>
-                  <ExternalLink className="w-3 h-3 opacity-60" />
-                </a>
-              </div>
-
-              {/* Realistic Phone Mockup with Property Listing */}
-              <div className="pt-2 flex justify-center lg:justify-start">
-                <div className="relative w-full max-w-[280px] bg-slate-950 rounded-[26px] p-3 border-2 border-slate-700/80 shadow-2xl overflow-hidden flex flex-col justify-between text-left">
-                  {/* Phone Screen Header */}
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-5 h-5 rounded-md bg-[#00D084] text-[#051A12] font-black text-[10px] flex items-center justify-center">
-                        e
-                      </div>
-                      <span className="text-xs font-bold text-white">NearbyEstate</span>
-                    </div>
-                    <span className="inline-flex items-center gap-1 text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-[#00D084] font-mono font-bold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
-                      Live
-                    </span>
+              {/* Features List */}
+              <ul className="space-y-3.5 pt-2 text-sm text-slate-200">
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
                   </div>
-
-                  {/* Property Card on Phone Screen */}
-                  <div className="space-y-2 py-2">
-                    <div className="h-28 rounded-xl overflow-hidden bg-slate-800 relative">
-                      <img
-                        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"
-                        alt="Independent House / Villa"
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.currentTarget.src = '/images/home.jpg';
-                        }}
-                      />
-                      <div className="absolute top-2 left-2 bg-black/75 px-2 py-0.5 rounded text-[9px] text-white font-bold backdrop-blur-xs flex items-center gap-1">
-                        <MapPin className="w-2.5 h-2.5 text-[#00D084]" />
-                        <span>1.5 km away</span>
-                      </div>
-                    </div>
-                    <div className="text-xs font-bold text-white truncate">Independent House / Villa</div>
-                    <div className="text-[10px] text-[#00D084] font-bold">₹52 Lakh • Available Near You</div>
+                  <span className="font-bold text-white">1 Post Free</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
                   </div>
-
-                  {/* In-app action indicator */}
-                  <div className="pt-1">
-                    <span className="w-full py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-[#00D084] text-[10px] font-bold flex items-center justify-center gap-1">
-                      <span>Direct Owner Listings</span>
-                    </span>
+                  <span>Google Plus Code location</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
                   </div>
-                </div>
-              </div>
+                  <span>Direct WhatsApp & phone leads</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span>Nearby search discovery</span>
+                </li>
+              </ul>
             </div>
-          </div>
-        </motion.div>
+
+            <div className="pt-8">
+              <a
+                href={starterWhatsAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="plan_starter_claim"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-200 cursor-pointer"
+              >
+                <span>Get Started Free</span>
+                <ArrowUpRight className="w-4 h-4 text-[#00D084]" />
+              </a>
+              <p className="text-[11px] text-slate-400 text-center mt-2.5">Instant free setup</p>
+            </div>
+          </motion.div>
+
+          {/* ================= PLAN 2: GROWTH PLAN (₹99 - POPULAR) ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="rounded-3xl bg-gradient-to-b from-[#0D382A] to-[#0A261D] border-2 border-[#00D084]/60 p-7 lg:p-8 flex flex-col justify-between relative shadow-2xl shadow-[#00D084]/20 transform md:-translate-y-2"
+          >
+            {/* Most Popular Highlight Pill */}
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+              <span className="bg-[#00D084] text-[#051A12] text-[11px] font-black uppercase tracking-wider px-4 py-1 rounded-full shadow-lg shadow-[#00D084]/30">
+                Most Popular
+              </span>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pt-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#00D084] bg-[#00D084]/15 border border-[#00D084]/30 px-3 py-1 rounded-full">
+                  Growth Plan
+                </span>
+                <span className="text-xs text-emerald-300 font-semibold">3 Months Validity</span>
+              </div>
+
+              <div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹99</span>
+                  <span className="text-slate-300 text-sm font-medium">/ 3 months</span>
+                </div>
+                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Ideal for independent agents & sellers needing multiple local property listings.
+                </p>
+              </div>
+
+              {/* Features List */}
+              <ul className="space-y-3.5 pt-2 text-sm text-slate-200">
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084] flex items-center justify-center shrink-0 text-[#051A12]">
+                    <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                  </div>
+                  <span className="font-bold text-white">Post up to 3 properties</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/20 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span>Google Plus Code location</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/20 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span>Direct WhatsApp & phone contacts</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/20 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span>Priority nearby radius listing</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-8">
+              <a
+                href={growthWhatsAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="plan_growth_subscribe"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#051A12] font-black text-sm shadow-lg shadow-[#00D084]/25 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
+              >
+                <span>Choose Growth Plan</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <p className="text-[11px] text-slate-300 text-center mt-2.5 font-medium">Only ₹33 / month equivalent</p>
+            </div>
+          </motion.div>
+
+          {/* ================= PLAN 3: AGENCY PRO (₹499) ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="rounded-3xl bg-[#0A261D]/80 backdrop-blur-xl border border-white/10 p-7 lg:p-8 flex flex-col justify-between hover:border-[#00D084]/40 transition-all duration-300 shadow-xl group"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 bg-emerald-500/15 border border-emerald-500/25 px-3 py-1 rounded-full">
+                  Agency Pro
+                </span>
+                <span className="text-xs text-slate-400 font-medium">6 Months Validity</span>
+              </div>
+
+              <div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹499</span>
+                  <span className="text-slate-400 text-sm font-medium">/ 6 months</span>
+                </div>
+                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  For established agencies wanting verified brand presence & high volume.
+                </p>
+              </div>
+
+              {/* Features List */}
+              <ul className="space-y-3.5 pt-2 text-sm text-slate-200">
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span className="font-bold text-white">Up to 20 property listings</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span className="font-medium text-emerald-300">Verified agency profile badge</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span>Google Plus Code location</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 text-[#00D084]" />
+                  </div>
+                  <span>Admin-reviewed listings & support</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-8">
+              <a
+                href={agencyWhatsAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="agent_pro_subscribe_click"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-200 cursor-pointer"
+              >
+                <span>Register as Verified Agent</span>
+                <ArrowUpRight className="w-4 h-4 text-[#00D084]" />
+              </a>
+              <p className="text-[11px] text-slate-400 text-center mt-2.5">Activation after verification</p>
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* Reassurance Footer Bar */}
+        <div className="text-center text-xs text-slate-400 pt-10 sm:pt-12 flex items-center justify-center gap-6 flex-wrap">
+          <span className="inline-flex items-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-[#00D084]" />
+            Direct buyer connection • Zero brokerage commissions
+          </span>
+          <span className="hidden sm:inline">•</span>
+          <span className="inline-flex items-center gap-1.5">
+            <MapPin className="w-3.5 h-3.5 text-[#00D084]" />
+            Location accuracy via Google Plus Codes
+          </span>
+          <span className="hidden sm:inline">•</span>
+          <span>WhatsApp instant agent onboarding</span>
+        </div>
       </div>
     </section>
   );
