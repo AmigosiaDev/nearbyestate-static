@@ -122,7 +122,7 @@ export const Hero: React.FC = () => {
                 <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-[#00D084] shrink-0">
                   <Sparkles className="w-3 h-3 text-[#00D084]" />
                 </div>
-                <span className="font-semibold text-white">Unlimited Free Ads</span>
+                <span className="font-semibold text-white">Free Ads</span>
               </div>
               <span className="text-white/30 hidden md:inline">•</span>
               <div className="flex items-center gap-2">
@@ -136,7 +136,7 @@ export const Hero: React.FC = () => {
                 <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-[#00D084] shrink-0">
                   <ShieldCheck className="w-3 h-3 text-[#00D084]" />
                 </div>
-                <span className="font-semibold text-white">Direct Connect</span>
+                <span className="font-semibold text-white">Direct Lead</span>
               </div>
             </motion.div>
 

@@ -65,9 +65,8 @@ export const AgentProSection: React.FC = () => {
               </div>
 
               <div>
-                <div className="flex items-baseline gap-1.5">
+                <div className="flex items-baseline">
                   <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹0</span>
-                  <span className="text-slate-400 text-sm font-medium">/ 1 month</span>
                 </div>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
                   Test NearbyEstate and get your first local property in front of nearby buyers.
@@ -142,9 +141,8 @@ export const AgentProSection: React.FC = () => {
               </div>
 
               <div>
-                <div className="flex items-baseline gap-1.5">
+                <div className="flex items-baseline">
                   <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹99</span>
-                  <span className="text-slate-300 text-sm font-medium">/ 3 months</span>
                 </div>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
                   Ideal for independent agents & sellers needing multiple local property listings.
@@ -212,9 +210,8 @@ export const AgentProSection: React.FC = () => {
               </div>
 
               <div>
-                <div className="flex items-baseline gap-1.5">
+                <div className="flex items-baseline">
                   <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">₹499</span>
-                  <span className="text-slate-400 text-sm font-medium">/ 6 months</span>
                 </div>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
                   For established agencies wanting verified brand presence & high volume.
