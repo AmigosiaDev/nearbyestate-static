@@ -36,7 +36,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-white tracking-tight leading-tight">
-            Have More Questions? <span className="text-[#00D084]">We're Here to Help.</span>
+            Need Help? <span className="text-[#00D084]">Contact Us.</span>
           </h2>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal pt-1">
