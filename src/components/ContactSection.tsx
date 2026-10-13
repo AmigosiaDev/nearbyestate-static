@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle2, MessageSquare, ChevronDown, ShieldCheck } from 'lucide-react';
+import { Send, CheckCircle2, ChevronDown, ShieldCheck } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -30,11 +30,6 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#00D084] text-xs font-bold tracking-wide uppercase shadow-inner">
-            <MessageSquare className="w-3.5 h-3.5 text-[#00D084]" />
-            <span>We're Here to Help</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-white tracking-tight leading-tight">
             Need Help? <span className="text-[#00D084]">Contact Us.</span>
           </h2>
