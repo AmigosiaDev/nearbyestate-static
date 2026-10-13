@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle2, ChevronDown, ShieldCheck } from 'lucide-react';
+import { Send, CheckCircle2, ChevronDown, ShieldCheck, Loader2, AlertCircle } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,10 +12,35 @@ export const ContactSection: React.FC = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(result.error || 'Failed to send your enquiry. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setErrorMessage(err.message || 'Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -172,15 +197,33 @@ export const ContactSection: React.FC = () => {
                 />
               </div>
 
+              {/* Error Banner */}
+              {errorMessage && (
+                <div className="p-3.5 rounded-xl bg-red-500/15 border border-red-500/30 text-red-200 text-xs flex items-center gap-2.5">
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
+
               {/* Row 4: Submit Button & Reassurance Note */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <button
                   type="submit"
                   id="contact_form_submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#051A12] font-extrabold text-sm shadow-lg shadow-[#00D084]/20 transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#051A12] font-extrabold text-sm shadow-lg shadow-[#00D084]/20 transition-all transform hover:-translate-y-0.5 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  <span>Submit Enquiry</span>
-                  <Send className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-[#051A12]" />
+                      <span>Sending Enquiry...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit Enquiry</span>
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
 
                 <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
