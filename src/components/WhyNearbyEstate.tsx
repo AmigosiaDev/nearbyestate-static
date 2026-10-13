@@ -61,7 +61,7 @@ export const WhyNearbyEstate: React.FC = () => {
             Property Search, Made Simple
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-emerald-100/75 font-normal">
-            Built specifically to solve the frustration of traditional real-estate websites by putting nearby physical proximity first.
+            Built to help you find properties near you, easily.
           </p>
         </div>
 
