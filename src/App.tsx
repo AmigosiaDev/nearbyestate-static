@@ -11,6 +11,7 @@ import { WhyNearbyEstate } from './components/WhyNearbyEstate';
 // import { AgencySection } from './components/AgencySection';
 import { AgentProSection } from './components/AgentProSection';
 import { FAQ } from './components/FAQ';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
 import { MobileStickyCTA } from './components/MobileStickyCTA';
@@ -38,9 +39,10 @@ export const App: React.FC = () => {
         <AgentProSection />
 
         {/* 5. Frequently Asked Questions */}
-
-        {/* 6. Frequently Asked Questions */}
         <FAQ />
+
+        {/* 6. Contact & Support Enquiry Section */}
+        <ContactSection />
       </main>
 
       {/* 11. Footer */}

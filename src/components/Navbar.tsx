@@ -26,6 +26,7 @@ export const Navbar: React.FC = () => {
     { label: 'Why Us', href: '#why-us' },
     { label: 'For Agents', href: '#agent-pro' },
     { label: 'FAQ', href: '#faq' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (
