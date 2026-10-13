@@ -52,9 +52,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               <li>
                 <a href="#why-us" className="hover:text-emerald-400 transition-colors">Why NearbyEstate</a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="https://nearbyestate.in/home"

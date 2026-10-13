@@ -10,7 +10,7 @@ import { WhyNearbyEstate } from './components/WhyNearbyEstate';
 // import { UseCases } from './components/UseCases';
 // import { AgencySection } from './components/AgencySection';
 import { AgentProSection } from './components/AgentProSection';
-import { FAQ } from './components/FAQ';
+// import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
@@ -38,8 +38,8 @@ export const App: React.FC = () => {
         {/* 4. Unified Verified Agents & App Discovery Section */}
         <AgentProSection />
 
-        {/* 5. Frequently Asked Questions */}
-        <FAQ />
+        {/* 5. Frequently Asked Questions (Commented out for future use) */}
+        {/* <FAQ /> */}
 
         {/* 6. Contact & Support Enquiry Section */}
         <ContactSection />
