@@ -9,6 +9,7 @@ import { WhyNearbyEstate } from './components/WhyNearbyEstate';
 // import { HowItWorks } from './components/HowItWorks';
 // import { UseCases } from './components/UseCases';
 // import { AgencySection } from './components/AgencySection';
+import { AgentWorkflowSection } from './components/AgentWorkflowSection';
 import { AgentProSection } from './components/AgentProSection';
 // import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
@@ -38,10 +39,13 @@ export const App: React.FC = () => {
         {/* 3. Core Value Pillars */}
         <WhyNearbyEstate />
 
-        {/* 4. Unified Verified Agents & App Discovery Section */}
-        <AgentProSection />
+        {/* 4. Agent Workflow & Platform Process */}
+        <AgentWorkflowSection />
 
-        {/* 5. Frequently Asked Questions (Commented out for future use) */}
+        {/* 5. Unified Verified Agents & App Discovery Section */}
+        <AgentProSection onOpenIOSModal={() => setIosModalOpen(true)} />
+
+        {/* 6. Frequently Asked Questions (Commented out for future use) */}
         {/* <FAQ /> */}
 
         {/* 6. Contact & Support Enquiry Section */}
