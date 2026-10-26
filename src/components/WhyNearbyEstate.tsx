@@ -58,7 +58,7 @@ export const WhyNearbyEstate: React.FC = () => {
             <span>The NearbyEstate Advantage</span>
           </div>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Property Search, Made Simple
+            Property Search & Made Simple
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-emerald-100/75 font-normal">
             Built to help you find properties near you, easily.

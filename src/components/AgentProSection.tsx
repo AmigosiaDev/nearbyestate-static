@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowUpRight, ShieldCheck, MapPin, Sparkles } from 'lucide-react';
+import { triggerSmartDownload, getPlayStoreTrackedUrl } from '../utils/appLinks';
 
-export const AgentProSection: React.FC = () => {
+interface AgentProSectionProps {
+  onOpenIOSModal?: () => void;
+}
+
+export const AgentProSection: React.FC<AgentProSectionProps> = ({ onOpenIOSModal }) => {
 
   return (
     <section id="agent-pro" className="py-14 sm:py-20 lg:py-24 bg-[#071F17] relative overflow-hidden text-white">
@@ -90,7 +95,10 @@ export const AgentProSection: React.FC = () => {
 
             <div className="pt-8">
               <a
-                href="#contact"
+                href={getPlayStoreTrackedUrl('pricing_starter')}
+                onClick={(e) => triggerSmartDownload(e, 'pricing_starter', onOpenIOSModal)}
+                target="_blank"
+                rel="noopener noreferrer"
                 id="plan_starter_claim"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-200 cursor-pointer"
               >
@@ -164,7 +172,10 @@ export const AgentProSection: React.FC = () => {
 
             <div className="pt-8">
               <a
-                href="#contact"
+                href={getPlayStoreTrackedUrl('pricing_growth')}
+                onClick={(e) => triggerSmartDownload(e, 'pricing_growth', onOpenIOSModal)}
+                target="_blank"
+                rel="noopener noreferrer"
                 id="plan_growth_subscribe"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#051A12] font-black text-sm shadow-lg shadow-[#00D084]/25 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
               >
@@ -231,7 +242,10 @@ export const AgentProSection: React.FC = () => {
 
             <div className="pt-8">
               <a
-                href="#contact"
+                href={getPlayStoreTrackedUrl('pricing_agency_pro')}
+                onClick={(e) => triggerSmartDownload(e, 'pricing_agency_pro', onOpenIOSModal)}
+                target="_blank"
+                rel="noopener noreferrer"
                 id="agent_pro_subscribe_click"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-200 cursor-pointer"
               >
