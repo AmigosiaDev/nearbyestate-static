@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   Sparkles,
   ArrowUpRight,
-  MessageCircle,
 } from 'lucide-react';
 import { BRAND_CONFIG, AGENCY_BENEFITS } from '../data/websiteData';
 
@@ -143,25 +142,23 @@ export const AgencySection: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Direct Buyer Phone & WhatsApp</span>
+                  <span>Direct Buyer Phone & Inquiries</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span>Zero Commission Deductions</span>
+                  <span>Direct Client Connection</span>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-stretch gap-3 justify-center">
               <a
-                href={BRAND_CONFIG.agencyWhatsAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                id="agency_partner_whatsapp"
+                href="#contact"
+                id="agency_partner_contact"
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-200 transform hover:-translate-y-0.5"
               >
-                <MessageCircle className="w-4 h-4 fill-current" />
-                <span>Partner via WhatsApp</span>
+                <span>Partner with Us</span>
+                <ArrowUpRight className="w-4 h-4 text-slate-950" />
               </a>
 
               <a

@@ -58,7 +58,6 @@ export const BRAND_CONFIG = {
   playStoreUrl: 'https://play.google.com/store/apps/details?id=space.nearestate.twa',
   webAppUrl: 'https://nearbyestate.in/home',
   instagramUrl: 'https://www.instagram.com/nearestate_/',
-  agencyWhatsAppUrl: 'https://wa.me/?text=Hello%20NearbyEstate%2C%20I%20would%20like%20to%20partner%20with%20NearbyEstate%20as%20a%20Real%20Estate%20Agency.',
   officialWebUrl: 'https://nearbyestate.in',
   copyrightYear: 2026,
 };
@@ -92,10 +91,10 @@ export const AGENCY_BENEFITS: AgencyBenefit[] = [
   {
     id: 'direct-leads',
     title: 'Direct Client Inquiries',
-    subtitle: 'Zero Commission Deductions',
-    description: 'All buyer calls and WhatsApp messages connect straight to your agency phone. Connect directly with serious buyers.',
+    subtitle: 'Direct Inquiries',
+    description: 'All buyer calls and direct inquiries connect straight to your agency phone. Connect directly with serious buyers.',
     iconName: 'PhoneCall',
-    badge: '100% Commission Yours',
+    badge: 'Direct Leads',
   },
   {
     id: 'radar-priority',
@@ -240,9 +239,9 @@ export const APP_FEATURES: FeatureItem[] = [
   {
     id: 'direct-contact',
     title: 'Direct Seller Connect',
-    description: 'Connect directly with property owners and sellers with zero middleman hurdles.',
+    description: 'Connect directly with property owners and sellers for faster communication.',
     iconName: 'PhoneCall',
-    badge: 'Zero Middlemen',
+    badge: 'Direct Connect',
   },
 ];
 

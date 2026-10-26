@@ -57,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               </li> */}
               <li>
                 <a
-                  href="https://nearbyestate.in/home"
+                  href={BRAND_CONFIG.webAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 transition-colors pt-1"
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               </a>
 
               <a
-                href="https://nearbyestate.in/home"
+                href={BRAND_CONFIG.webAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/30 text-white font-semibold text-xs transition-all group w-full"

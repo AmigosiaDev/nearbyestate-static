@@ -3,8 +3,13 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Sparkles, Smartphone, ArrowUpRight, Star, Globe, Apple, ExternalLink } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
 import { GooglePlayIcon } from './Navbar';
+import { triggerSmartDownload, getPlayStoreTrackedUrl } from '../utils/appLinks';
 
-export const DownloadCTA: React.FC = () => {
+interface DownloadCTAProps {
+  onOpenIOSModal?: () => void;
+}
+
+export const DownloadCTA: React.FC<DownloadCTAProps> = ({ onOpenIOSModal }) => {
   return (
     <section id="download" className="py-16 sm:py-20 md:py-28 bg-[#071F17] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,22 +55,20 @@ export const DownloadCTA: React.FC = () => {
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                 {/* Google Play Button */}
                 <a
-                  href={BRAND_CONFIG.playStoreUrl}
+                  href={getPlayStoreTrackedUrl('bottom_primary')}
+                  onClick={(e) => triggerSmartDownload(e, 'bottom_primary', onOpenIOSModal)}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="bottom_download_click"
-                  className="inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-white hover:bg-emerald-50 text-slate-900 font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-white/40 group w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-white hover:bg-emerald-50 text-slate-900 font-bold text-xs xs:text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-white/40 group w-full sm:w-auto min-h-[48px]"
                 >
-                  <GooglePlayIcon className="w-5 sm:w-6 h-5 sm:h-6 fill-current text-slate-900 transition-transform group-hover:scale-110" />
-                  <div className="text-left leading-tight">
-                    <div className="text-[10px] uppercase font-bold text-slate-500">Download on</div>
-                    <div className="text-sm sm:text-base font-extrabold text-slate-900">Google Play</div>
-                  </div>
+                  <GooglePlayIcon className="w-5 sm:w-6 h-5 sm:h-6 fill-current text-slate-900 transition-transform group-hover:scale-110 shrink-0" />
+                  <span className="font-extrabold text-slate-900">Explore More – Download the App Now</span>
                 </a>
 
                 {/* Launch Web App Button */}
                 <a
-                  href="https://nearbyestate.in/home"
+                  href={BRAND_CONFIG.webAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="bottom_webapp_click"
@@ -88,7 +91,7 @@ export const DownloadCTA: React.FC = () => {
                 <span>
                   <strong>On Apple iPhone/iPad?</strong> Open{' '}
                   <a
-                    href="https://nearbyestate.in/home"
+                    href={BRAND_CONFIG.webAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline hover:text-white font-semibold"
@@ -153,10 +156,11 @@ export const DownloadCTA: React.FC = () => {
 
                 {/* Play CTA link */}
                 <a
-                  href={BRAND_CONFIG.playStoreUrl}
+                  href={getPlayStoreTrackedUrl('bottom_card')}
+                  onClick={(e) => triggerSmartDownload(e, 'bottom_card', onOpenIOSModal)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors min-h-[44px]"
                 >
                   <GooglePlayIcon className="w-3.5 h-3.5 fill-current" />
                   <span>Get NearbyEstate on Google Play</span>

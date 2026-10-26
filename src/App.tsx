@@ -12,22 +12,25 @@ import { WhyNearbyEstate } from './components/WhyNearbyEstate';
 import { AgentProSection } from './components/AgentProSection';
 // import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
+import { DownloadCTA } from './components/DownloadCTA';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
 import { MobileStickyCTA } from './components/MobileStickyCTA';
+import { IOSAppModal } from './components/IOSAppModal';
 
 export const App: React.FC = () => {
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | null>(null);
+  const [iosModalOpen, setIosModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#071F17] text-white selection:bg-[#00D084] selection:text-[#051A12]">
       {/* Sticky Translucent Header */}
-      <Navbar />
+      <Navbar onOpenIOSModal={() => setIosModalOpen(true)} />
 
       {/* Main Semantic Landmark */}
       <main id="main-content" className="flex-1">
         {/* 1. Hero Section */}
-        <Hero />
+        <Hero onOpenIOSModal={() => setIosModalOpen(true)} />
 
         {/* 2. Property Categories */}
         <PropertyCategories />
@@ -43,6 +46,9 @@ export const App: React.FC = () => {
 
         {/* 6. Contact & Support Enquiry Section */}
         <ContactSection />
+
+        {/* 7. Bottom Homepage App Download CTA */}
+        <DownloadCTA onOpenIOSModal={() => setIosModalOpen(true)} />
       </main>
 
       {/* 11. Footer */}
@@ -54,10 +60,17 @@ export const App: React.FC = () => {
         onClose={() => setLegalModalType(null)}
       />
 
-      {/* 13. Mobile Sticky Download Bar (Appears after scrolling past hero) */}
-      <MobileStickyCTA />
+      {/* 13. iOS Native & PWA Experience Guide Modal */}
+      <IOSAppModal
+        isOpen={iosModalOpen}
+        onClose={() => setIosModalOpen(false)}
+      />
+
+      {/* 14. Mobile Sticky Download Bar (Appears after scrolling past hero) */}
+      <MobileStickyCTA onOpenIOSModal={() => setIosModalOpen(true)} />
     </div>
   );
 };
 
 export default App;
+

@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   MapPin,
-  Navigation,
-  Compass,
   ArrowRight,
   ShieldCheck,
   Sparkles,
   Check,
   Apple,
-  Search,
   Heart,
-  User,
   Home,
+  Building2,
+  FileText,
+  PlusCircle,
+  Settings,
 } from 'lucide-react';
 import { BRAND_CONFIG } from '../data/websiteData';
 import { GooglePlayIcon } from './Navbar';
+import { triggerSmartDownload, getPlayStoreTrackedUrl } from '../utils/appLinks';
 
-export const Hero: React.FC = () => {
-  const [isDesktop, setIsDesktop] = React.useState(false);
+interface HeroProps {
+  onOpenIOSModal?: () => void;
+}
 
-  React.useEffect(() => {
+export const Hero: React.FC<HeroProps> = ({ onOpenIOSModal }) => {
+  const [selectedTab, setSelectedTab] = useState<'residential' | 'commercial'>('residential');
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
     const updateMatch = (e: MediaQueryListEvent | MediaQueryList) => {
       setIsDesktop(e.matches);
@@ -33,7 +39,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[95vh] pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden flex flex-col justify-center bg-[#071F17] text-white"
+      className="relative min-h-[92vh] pt-28 pb-14 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-28 overflow-hidden flex flex-col justify-center bg-[#071F17] text-white"
     >
       {/* ================= LUXURY ARCHITECTURAL VILLA BACKGROUND ================= */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -83,19 +89,20 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
               className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
             >
-              {/* Primary Button: Solid Accent Mint */}
+              {/* Primary Button: Solid Accent Mint with Smart Link Routing */}
               <a
-                href={BRAND_CONFIG.playStoreUrl}
+                href={getPlayStoreTrackedUrl('hero_primary')}
+                onClick={(e) => triggerSmartDownload(e, 'hero_primary', onOpenIOSModal)}
                 target="_blank"
                 rel="noopener noreferrer"
                 id="hero_download_click"
-                className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#0A231B] font-bold text-sm sm:text-base shadow-xl shadow-[#00D084]/20 transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 group"
+                className="inline-flex items-center justify-center gap-2.5 sm:gap-3 px-5 sm:px-6 lg:px-8 py-3.5 sm:py-4 rounded-2xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#0A231B] font-bold text-xs xs:text-sm sm:text-base shadow-xl shadow-[#00D084]/20 transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-emerald-400/30 group text-center min-h-[48px]"
               >
-                <div className="flex items-center gap-1.5 opacity-90 group-hover:opacity-100">
+                <div className="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 shrink-0">
                   <Apple className="w-4 h-4 fill-current text-[#0A231B]" />
                   <GooglePlayIcon className="w-4 h-4 fill-current text-[#0A231B]" />
                 </div>
-                <span>Get Mobile App</span>
+                <span>Explore More – Download the App Now</span>
               </a>
 
               {/* Secondary Button: Frosted Glass outline "Try in Browser →" */}
@@ -104,7 +111,7 @@ export const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 id="hero_webapp_click"
-                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-md shadow-xs hover:shadow-md transition-all duration-200 group"
+                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-md shadow-xs hover:shadow-md transition-all duration-200 group min-h-[48px]"
               >
                 <span>Try in Browser</span>
                 <ArrowRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-all" />
@@ -142,50 +149,57 @@ export const Hero: React.FC = () => {
 
           </div>
 
-          {/* ================= RIGHT COLUMN: 3D SMARTPHONE MOCKUP & FLOATING CARDS ================= */}
-          <div className="lg:col-span-5 relative flex flex-col justify-center items-center py-6 sm:py-8 lg:[perspective:1400px] w-full">
+          {/* ================= RIGHT COLUMN: GENUINE APP DEMONSTRATION PHONE ================= */}
+          <div className="lg:col-span-5 relative flex flex-col justify-center items-center py-4 sm:py-6 lg:mt-8 w-full lg:[perspective:1200px]">
             {/* Ambient Radiant Emerald Backlight Glow casting on villa */}
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[380px] h-[500px] sm:h-[540px] bg-[#00D084]/35 blur-[65px] rounded-full pointer-events-none -z-10 animate-pulse"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[380px] h-[500px] sm:h-[560px] bg-[#00D084]/35 blur-[65px] rounded-full pointer-events-none -z-10 animate-pulse"
               style={{ animationDuration: '4s' }}
             />
-            <div className="absolute top-1/3 right-0 w-64 h-80 bg-emerald-400/30 blur-[50px] rounded-full pointer-events-none -z-10" />
+            <div className="absolute top-1/3 right-0 w-64 h-80 bg-emerald-400/25 blur-[50px] rounded-full pointer-events-none -z-10" />
 
-            {/* Deep Directional Cast Grounding Shadow (Desktop 3D Angle) */}
-            {isDesktop && (
-              <motion.div
-                animate={{
-                  y: [0, -14, 0],
-                  scale: [1, 0.97, 1],
-                  opacity: [0.85, 0.7, 0.85],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="absolute top-14 left-4 w-[280px] xs:w-[310px] sm:w-[330px] lg:w-[345px] h-[580px] xs:h-[630px] sm:h-[670px] bg-black/90 blur-[40px] rounded-[60px] transform-gpu -translate-x-12 translate-y-14 rotate-[13deg] pointer-events-none -z-10"
-              />
-            )}
+            {/* Directional Grounding Shadow (Angled for right tilt) */}
+            <motion.div
+              animate={
+                isDesktop
+                  ? {
+                      y: [0, -12, 0],
+                      scale: [1, 0.96, 1],
+                      opacity: [0.85, 0.7, 0.85],
+                    }
+                  : { y: [0, -6, 0] }
+              }
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              style={{
+                transform: isDesktop
+                  ? 'translate(-18px, 18px) rotate(7deg)'
+                  : 'none',
+              }}
+              className="absolute top-20 left-1/2 -translate-x-1/2 w-[270px] sm:w-[320px] h-[540px] sm:h-[600px] bg-black/90 blur-[45px] rounded-[50px] pointer-events-none -z-10"
+            />
 
-            {/* Smartphone Mockup with 3D Extrusion on Desktop & Clean Upright Alignment on Mobile */}
+            {/* Smartphone Mockup with Subtle Right Tilt (~7° on Desktop) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={
                 isDesktop
                   ? {
                       opacity: 1,
-                      y: [0, -14, 0],
-                      rotateZ: [13.5, 15, 13.5],
-                      rotateX: [13, 15, 13],
-                      rotateY: [-17, -19, -17],
+                      y: [0, -12, 0],
+                      rotateZ: [6.5, 7.8, 6.5],
+                      rotateY: [-6, -7.5, -6],
+                      rotateX: [5, 6.5, 5],
                     }
                   : {
                       opacity: 1,
-                      y: [0, -8, 0],
-                      rotateZ: 0,
-                      rotateX: 0,
+                      y: [0, -6, 0],
+                      rotateZ: 2,
                       rotateY: 0,
+                      rotateX: 0,
                     }
               }
               transition={
@@ -194,8 +208,8 @@ export const Hero: React.FC = () => {
                       opacity: { duration: 0.8, ease: 'easeOut' },
                       y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
                       rotateZ: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
-                      rotateX: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
                       rotateY: { duration: 6.5, repeat: Infinity, ease: 'easeInOut' },
+                      rotateX: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
                     }
                   : {
                       opacity: { duration: 0.8, ease: 'easeOut' },
@@ -203,16 +217,17 @@ export const Hero: React.FC = () => {
                     }
               }
               whileHover={{
-                scale: 1.02,
+                scale: 1.025,
+                rotateZ: 4.5,
                 transition: { duration: 0.3 },
               }}
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: isDesktop
-                  ? '1px 1px 0px #475569, 2px 2px 0px #334155, 3px 3px 0px #334155, 4px 4px 0px #1e293b, 5px 5px 0px #1e293b, 6px 6px 0px #0f172a, 7px 7px 0px #0f172a, 8px 8px 0px #020617, 9px 9px 0px #020617, -25px 45px 65px -10px rgba(0,0,0,0.9), -12px 25px 35px -5px rgba(0,0,0,0.75), 0px 0px 55px 8px rgba(0,208,132,0.38)'
-                  : '0 20px 45px -10px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 208, 132, 0.25)',
+                  ? '1px 1px 0px #475569, 2px 2px 0px #334155, 3px 3px 0px #1e293b, 4px 4px 0px #0f172a, 16px 36px 55px -10px rgba(0,0,0,0.85), -10px 20px 30px -5px rgba(0,0,0,0.6), 0 0 50px 10px rgba(0, 208, 132, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.12)'
+                  : '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 208, 132, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.12)',
               }}
-              className="relative z-20 w-full max-w-[280px] xs:max-w-[310px] sm:max-w-[335px] lg:max-w-[355px] h-[570px] xs:h-[620px] sm:h-[660px] lg:h-[675px] bg-[#0B1120] rounded-[44px] xs:rounded-[48px] sm:rounded-[52px] p-2.5 xs:p-3 border-[4.5px] border-slate-600/90 border-t-slate-400/90 border-l-slate-400/90 border-r-slate-800 border-b-slate-900 mx-auto cursor-pointer group/phone select-none"
+              className="relative z-20 w-full max-w-[275px] xs:max-w-[305px] sm:max-w-[335px] lg:max-w-[345px] h-[530px] xs:h-[585px] sm:h-[625px] lg:h-[650px] bg-[#0B1120] rounded-[44px] xs:rounded-[48px] sm:rounded-[52px] p-2.5 xs:p-3 border-[4.5px] border-slate-600/90 border-t-slate-400/90 border-l-slate-400/90 border-r-slate-800 border-b-slate-900 mx-auto select-none cursor-pointer group/phone"
             >
               {/* Left Titanium Frame Buttons: Action Button & Volume Rockers */}
               <div className="absolute -left-[6px] top-28 w-[3.5px] h-7 bg-slate-400 rounded-l-sm shadow-xs pointer-events-none" />
@@ -222,163 +237,244 @@ export const Hero: React.FC = () => {
               <div className="absolute -right-[6px] top-36 w-[3.5px] h-16 bg-slate-500 rounded-r-sm shadow-xs pointer-events-none" />
 
               {/* Phone Dynamic Island */}
-              <div className="absolute top-3.5 xs:top-4 left-1/2 -translate-x-1/2 w-24 xs:w-28 h-4 xs:h-5 bg-black rounded-full z-30 flex items-center justify-end px-3">
-                <div className="w-2 xs:w-2.5 h-2 xs:h-2.5 rounded-full bg-slate-800 border border-slate-700" />
+              <div className="absolute top-2.5 xs:top-3 left-1/2 -translate-x-1/2 w-22 xs:w-24 h-3.5 xs:h-4 bg-black rounded-full z-40 flex items-center justify-end px-3">
+                <div className="w-1.5 xs:w-2 h-1.5 xs:h-2 rounded-full bg-slate-800 border border-slate-700" />
               </div>
 
-              {/* Internal Screen Content */}
-              <div className="w-full h-full bg-[#F4F7F5] rounded-[40px] xs:rounded-[44px] overflow-hidden flex flex-col text-slate-800 relative select-none">
+              {/* Internal Screen Content - Genuine App Home Screen */}
+              <div className="w-full h-full bg-[#FAFCFB] rounded-[38px] xs:rounded-[42px] overflow-hidden flex flex-col text-slate-800 relative select-none shadow-inner">
                 {/* Photorealistic Diagonal Glass Specular Sheen across Screen */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.12] to-transparent pointer-events-none z-20 rounded-[40px] xs:rounded-[44px]" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent pointer-events-none z-30 rounded-[38px] xs:rounded-[42px]" />
 
-                {/* Status Bar */}
-                <div className="pt-2.5 xs:pt-3 px-5 xs:px-6 pb-1 flex justify-between items-center text-[10px] xs:text-[11px] font-semibold text-slate-500 z-10 bg-white">
-                  <span>9:41</span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#00D084] animate-pulse" />
-                    <span className="text-[10px]">5G</span>
+                {/* 1. App Top Header (Dark Green Theme matching genuine App) */}
+                <div className="pt-5 xs:pt-6 px-3.5 pb-2 bg-[#0F382C] text-white shrink-0 shadow-sm z-20">
+                  <div className="flex items-center justify-between">
+                    <span className="font-extrabold text-sm xs:text-base tracking-tight text-white">
+                      NearbyEstate
+                    </span>
+                    <button
+                      type="button"
+                      className="px-3 py-0.5 rounded-full bg-white text-[#0F382C] text-[10px] xs:text-[11px] font-bold shadow-xs hover:bg-slate-100 transition-colors"
+                    >
+                      Login
+                    </button>
+                  </div>
+                  {/* Location Selector Bar */}
+                  <div className="flex items-center gap-1.5 mt-1.5 text-[10px] xs:text-[11px] text-white/90">
+                    <MapPin className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <span className="font-medium truncate max-w-[170px] xs:max-w-[190px]">
+                      Polytechnic Bus Stop, Po...
+                    </span>
+                    <span className="px-1.5 py-0.2 rounded bg-white/20 text-[9px] font-semibold text-emerald-200">
+                      All
+                    </span>
                   </div>
                 </div>
 
-                {/* Search Bar matching mockup: "interactive real GPS map" */}
-                <div className="px-3.5 pt-1.5 pb-2 bg-white border-b border-slate-100 shadow-xs z-10">
-                  <div className="flex items-center justify-between bg-slate-100/90 rounded-xl px-3 py-1.5 text-xs text-slate-500">
-                    <div className="flex items-center gap-2">
-                      <Search className="w-3.5 h-3.5 text-slate-400" />
-                      <span className="font-medium text-[11px] text-slate-700">interactive real GPS map</span>
-                    </div>
-                    <div className="w-4 h-4 rounded-full bg-emerald-50 text-[#00D084] flex items-center justify-center text-[9px] font-bold">
-                      ⊚
-                    </div>
-                  </div>
-                </div>
-
-                {/* Interactive Proximity Map Canvas */}
-                <div className="relative flex-1 bg-gradient-to-b from-emerald-50/70 via-teal-50/40 to-slate-100 overflow-hidden flex flex-col justify-between">
-                  {/* Map Coordinate Dots / Roads Overlay */}
-                  <div className="absolute inset-0 bg-[radial-gradient(#0F382C_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-20 pointer-events-none" />
-
-                  {/* Pulsing GPS Center Location Radar */}
-                  <div className="absolute top-[32%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                    <div className="relative flex items-center justify-center">
-                      <div className="w-20 xs:w-24 h-20 xs:h-24 rounded-full bg-emerald-500/25 animate-ping absolute" />
-                      <div className="w-12 xs:w-14 h-12 xs:h-14 rounded-full bg-[#00D084]/20 animate-pulse absolute" />
-                      <div className="w-9 xs:w-10 h-9 xs:h-10 rounded-full bg-[#0F382C] text-white flex items-center justify-center shadow-lg border-2 border-white">
-                        <Navigation className="w-4 h-4 transform -rotate-45 text-[#00D084]" />
+                {/* 2. Scrollable App Interior */}
+                <div className="flex-1 overflow-y-auto no-scrollbar px-3 py-2 space-y-2.5 text-left bg-[#F7FAF8]">
+                  {/* Promo Carousel Banner: "Find estate Quick and Easy" */}
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50/70 border border-orange-100/90 shadow-2xs p-2.5">
+                    <div className="flex items-center justify-between">
+                      <div className="space-y-0.5">
+                        <p className="text-[10px] font-medium text-slate-700">Find estate</p>
+                        <h4 className="text-xs xs:text-sm font-extrabold text-slate-900 leading-tight">
+                          Quick and Easy
+                        </h4>
+                      </div>
+                      <div className="w-16 xs:w-20 h-12 xs:h-14 shrink-0 flex items-center justify-center">
+                        <img
+                          src="/images/C3.png"
+                          alt="Quick and Easy"
+                          className="w-full h-full object-contain"
+                        />
                       </div>
                     </div>
+                    {/* Carousel Dots */}
+                    <div className="flex items-center justify-center gap-1 mt-1">
+                      <span className="w-2.5 h-1 rounded-full bg-slate-700" />
+                      <span className="w-1 h-1 rounded-full bg-slate-300" />
+                      <span className="w-1 h-1 rounded-full bg-slate-300" />
+                    </div>
                   </div>
 
-                  {/* Clean Map Pins matching mockup screenshot */}
-                  <div className="absolute top-4 left-5 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full shadow-md text-[10px] font-bold text-slate-900 border border-emerald-300 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#00D084]" />
-                    <span>Villa • 1.2 km</span>
-                    <span className="bg-emerald-50 text-[#0F382C] px-1 rounded font-extrabold">₹48 L</span>
+                  {/* Segmented Filter Toggle: Residential vs Commercial */}
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedTab('residential')}
+                      className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-xl text-[10px] xs:text-[11px] font-bold transition-all shadow-2xs ${
+                        selectedTab === 'residential'
+                          ? 'bg-[#0F382C] text-white shadow-emerald-950/20'
+                          : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                      }`}
+                    >
+                      <Home className="w-3 h-3" />
+                      <span>Residential</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedTab('commercial')}
+                      className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-xl text-[10px] xs:text-[11px] font-bold transition-all shadow-2xs ${
+                        selectedTab === 'commercial'
+                          ? 'bg-[#0F382C] text-white shadow-emerald-950/20'
+                          : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                      }`}
+                    >
+                      <Building2 className="w-3 h-3" />
+                      <span>Commercial</span>
+                    </button>
                   </div>
 
-                  <div className="absolute top-8 right-4 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full shadow-md text-[10px] font-bold text-slate-900 border border-teal-300 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-teal-600" />
-                    <span>Plot • 650m</span>
-                    <span className="bg-teal-50 text-teal-800 px-1 rounded font-extrabold">₹25 L</span>
-                  </div>
-
-                  <div className="absolute top-24 left-6 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full shadow-md text-[9px] font-bold text-slate-900 border border-slate-300 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Shop • 2.1 km</span>
-                  </div>
-
-                  <div className="absolute top-20 right-8 w-6 h-6 rounded-full bg-[#00D084] text-white flex items-center justify-center text-[10px] font-bold shadow-md border-2 border-white animate-bounce">
-                    ⌂
-                  </div>
-
-                  {/* Floating Luxury Villa Card at Bottom matching mockup */}
-                  <div className="mt-auto relative z-20 p-2.5 xs:p-3">
-                    <div className="bg-white/95 backdrop-blur-md rounded-2xl p-2.5 xs:p-3 shadow-xl border border-slate-200/90 text-left space-y-2">
-                      <div className="flex items-center justify-between text-[10px] xs:text-[11px]">
-                        <span className="font-bold text-slate-900 flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
-                          Specific Villa
-                        </span>
-                        <span className="text-[#00D084] font-extrabold text-[11px] xs:text-xs">₹48 Lakh</span>
-                      </div>
-
-                      <div className="flex items-center gap-2.5">
-                        <div className="relative w-14 xs:w-16 h-14 xs:h-16 rounded-xl overflow-hidden bg-slate-100 shrink-0">
+                  {/* 4-Item Category Grid */}
+                  <div className="grid grid-cols-4 gap-1.5">
+                    {[
+                      { name: 'Land', img: '/images/land.jpg' },
+                      { name: 'House/Villas', img: '/images/home.jpg' },
+                      { name: 'Apartments', img: '/images/appartment.jpg' },
+                      { name: 'Others', img: '/images/commercialBuilding.jpg' },
+                    ].map((cat, i) => (
+                      <div key={i} className="flex flex-col items-center group/cat">
+                        <div className="w-full aspect-square rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative">
                           <img
-                            src="/hero-luxury-villa.jpg"
-                            alt="Luxury Villa"
-                            className="w-full h-full object-cover"
+                            src={cat.img}
+                            alt={cat.name}
+                            className="w-full h-full object-cover group-hover/cat:scale-105 transition-transform duration-300"
                           />
-                          <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[8px] font-bold px-1 rounded">
-                            1.2 km
+                        </div>
+                        <span className="text-[8.5px] xs:text-[9.5px] font-semibold text-slate-700 mt-1 truncate max-w-full text-center">
+                          {cat.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Quick Links Section */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] xs:text-[11px] font-bold text-slate-800">Quick Links</span>
+                    </div>
+                    <div className="grid grid-cols-4 gap-1.5">
+                      {[
+                        { name: 'Hostels', img: '/images/home.jpg' },
+                        { name: 'PG', img: '/images/office.jpg' },
+                        { name: 'Farms', img: '/images/farmLand.jpg' },
+                        { name: 'Others', img: '/images/shop.jpg' },
+                      ].map((link, i) => (
+                        <div key={i} className="flex flex-col items-center group/ql">
+                          <div className="w-full aspect-square rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative">
+                            <img
+                              src={link.img}
+                              alt={link.name}
+                              className="w-full h-full object-cover group-hover/ql:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                          <span className="text-[8.5px] xs:text-[9.5px] font-semibold text-slate-700 mt-1 truncate max-w-full text-center">
+                            {link.name}
                           </span>
                         </div>
+                      ))}
+                    </div>
+                  </div>
 
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-[11px] xs:text-xs font-bold text-slate-900 truncate">3 BHK Luxury Villa</h4>
-                          <p className="text-[9px] xs:text-[10px] text-slate-500 truncate">3 Bed • 2 Baths • Kakkanad</p>
-                          <div className="flex items-center justify-between text-[8px] xs:text-[9px] text-slate-600 pt-1">
-                            <span className="flex items-center gap-1 font-semibold text-[#0F382C]">
-                              <Check className="w-2.5 h-2.5 text-[#00D084]" />
-                              <span>Verified Owner • 0% Fee</span>
-                            </span>
-                          </div>
+                  {/* Properties Near By */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] xs:text-[11px] font-bold text-slate-900">Properties near by</span>
+                      <span className="text-[9px] xs:text-[10px] font-bold text-[#0F382C] hover:underline">
+                        View All
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="rounded-xl overflow-hidden bg-white border border-slate-200 shadow-xs relative group/card">
+                        <div className="relative h-16 xs:h-18 w-full overflow-hidden bg-slate-100">
+                          <img
+                            src="/hero-luxury-villa.jpg"
+                            alt="Property"
+                            className="w-full h-full object-cover"
+                          />
+                          <span className="absolute top-1 left-1 bg-[#0F382C]/90 text-white text-[7.5px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                            0.0 Km
+                          </span>
+                          <button
+                            type="button"
+                            className="absolute top-1 right-1 w-4 h-4 rounded-full bg-white/90 text-slate-600 flex items-center justify-center shadow-xs"
+                          >
+                            <Heart className="w-2.5 h-2.5" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="rounded-xl overflow-hidden bg-white border border-slate-200 shadow-xs relative group/card">
+                        <div className="relative h-16 xs:h-18 w-full overflow-hidden bg-slate-100">
+                          <img
+                            src="/images/appartment.jpg"
+                            alt="Property"
+                            className="w-full h-full object-cover"
+                          />
+                          <span className="absolute top-1 left-1 bg-[#0F382C]/90 text-white text-[7.5px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                            0.0 Km
+                          </span>
+                          <button
+                            type="button"
+                            className="absolute top-1 right-1 w-4 h-4 rounded-full bg-white/90 text-slate-600 flex items-center justify-center shadow-xs"
+                          >
+                            <Heart className="w-2.5 h-2.5" />
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Micro Bottom Navigation Bar */}
-                  <div className="pt-2 pb-2.5 border-t border-slate-100 bg-white flex justify-around text-slate-400 text-[10px] font-semibold">
-                    <div className="flex flex-col items-center text-[#00D084]">
-                      <Home className="w-3.5 h-3.5" />
+                {/* 3. App Bottom Navigation Bar (5 tabs) */}
+                <div className="pt-1.5 pb-2.5 px-3 bg-white border-t border-slate-200 flex justify-between items-center text-[8.5px] font-bold shrink-0 z-20">
+                  <div className="flex flex-col items-center text-emerald-600 gap-0.5">
+                    <Home className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Home</span>
+                  </div>
+                  <div className="flex flex-col items-center text-slate-500 hover:text-slate-700 gap-0.5">
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>My Ads</span>
+                  </div>
+                  <div className="flex flex-col items-center text-emerald-600 gap-0.5">
+                    <div className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                      <PlusCircle className="w-4 h-4" />
                     </div>
-                    <div className="flex flex-col items-center">
-                      <Compass className="w-3.5 h-3.5" />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <Heart className="w-3.5 h-3.5" />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <User className="w-3.5 h-3.5" />
-                    </div>
+                    <span>Post</span>
+                  </div>
+                  <div className="flex flex-col items-center text-slate-500 hover:text-slate-700 gap-0.5">
+                    <Heart className="w-3.5 h-3.5" />
+                    <span>Favourites</span>
+                  </div>
+                  <div className="flex flex-col items-center text-slate-500 hover:text-slate-700 gap-0.5">
+                    <Settings className="w-3.5 h-3.5" />
+                    <span>Settings</span>
                   </div>
                 </div>
               </div>
-
-              {/* ================= FLOATING FROSTED GLASS BADGES OVERLAPPING PHONE (Desktop only) ================= */}
-              {/* Tag 1 (Top-Left): "Verified Owner • 0% Fee" */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-                className="absolute top-20 -left-6 sm:-left-10 z-30 hidden lg:flex items-center gap-2 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full shadow-2xl border border-white/80 pointer-events-none whitespace-nowrap"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#00D084]" />
-                <span className="text-xs font-bold text-slate-900">Verified Owner • 0% Fee</span>
-              </motion.div>
-
-              {/* Tag 2 (Bottom-Right): "Verified Owner • 0% Fee" */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute bottom-20 -right-6 sm:-right-10 z-30 hidden lg:flex items-center gap-2 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full shadow-2xl border border-white/80 pointer-events-none whitespace-nowrap"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#00D084]" />
-                <span className="text-xs font-bold text-slate-900">Verified Owner • 0% Fee</span>
-              </motion.div>
             </motion.div>
 
             {/* Mobile & Tablet Pill Tags Strip */}
             <div className="flex lg:hidden flex-wrap items-center justify-center gap-2 mt-5 z-20 w-full px-2">
               <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs font-semibold text-slate-800">
                 <Check className="w-3.5 h-3.5 text-[#00D084] stroke-[3]" />
-                <span>Verified Owner • 0% Fee</span>
+                <span>Verified Owner</span>
               </div>
             </div>
           </div>
 
         </div>
       </div>
+
+      {/* Decorative Sparkle Accent Star on bottom right (matching Image 2) */}
+      <div className="absolute bottom-8 right-8 pointer-events-none opacity-80 hidden sm:block">
+        <svg className="w-8 h-8 text-white/60 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+        </svg>
+      </div>
     </section>
   );
 };
+

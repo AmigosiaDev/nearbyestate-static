@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { BRAND_CONFIG } from '../data/websiteData';
+import { triggerSmartDownload, getPlayStoreTrackedUrl } from '../utils/appLinks';
 
 // Google Play icon SVG
 export const GooglePlayIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
@@ -9,7 +9,11 @@ export const GooglePlayIcon: React.FC<{ className?: string }> = ({ className = "
   </svg>
 );
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenIOSModal?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenIOSModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -80,11 +84,12 @@ export const Navbar: React.FC = () => {
         <div className="hidden sm:flex items-center">
           {/* Primary Solid: Get Mobile App */}
           <a
-            href={BRAND_CONFIG.playStoreUrl}
+            href={getPlayStoreTrackedUrl('navbar')}
+            onClick={(e) => triggerSmartDownload(e, 'navbar', onOpenIOSModal)}
             target="_blank"
             rel="noopener noreferrer"
             id="navbar_download_cta"
-            className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#0F382C] hover:bg-[#072018] text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 shrink-0"
+            className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#0F382C] hover:bg-[#072018] text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 shrink-0 min-h-[40px]"
           >
             <GooglePlayIcon className="w-3.5 h-3.5 fill-current text-white" />
             <span>Get Mobile App</span>
@@ -123,11 +128,14 @@ export const Navbar: React.FC = () => {
 
           <div className="pt-2 border-t border-slate-100">
             <a
-              href={BRAND_CONFIG.playStoreUrl}
+              href={getPlayStoreTrackedUrl('navbar_mobile')}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                triggerSmartDownload(e, 'navbar_mobile', onOpenIOSModal);
+              }}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0F382C] hover:bg-[#072018] text-white text-xs font-bold shadow-md transition-all"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0F382C] hover:bg-[#072018] text-white text-xs font-bold shadow-md transition-all min-h-[44px]"
             >
               <GooglePlayIcon className="w-3.5 h-3.5 fill-current text-white" />
               <span>Get Mobile App</span>

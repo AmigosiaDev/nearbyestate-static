@@ -1,22 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowUpRight, ShieldCheck, MapPin, Sparkles } from 'lucide-react';
-import { BRAND_CONFIG } from '../data/websiteData';
 
 export const AgentProSection: React.FC = () => {
-  const whatsappBase = 'https://wa.me/919946465431?text=';
-
-  const starterWhatsAppUrl = `${whatsappBase}${encodeURIComponent(
-    'Hello NearbyEstate, I want to claim the Free 1-Month Starter Plan (1 free post).'
-  )}`;
-
-  const growthWhatsAppUrl = `${whatsappBase}${encodeURIComponent(
-    'Hello NearbyEstate, I want to subscribe to the ₹99 Growth Plan (3 properties, 3 months).'
-  )}`;
-
-  const agencyWhatsAppUrl = BRAND_CONFIG.agencyWhatsAppUrl || `${whatsappBase}${encodeURIComponent(
-    'Hello NearbyEstate, I want to register as a Verified Agent (₹499 Agency Pro, 20 properties).'
-  )}`;
 
   return (
     <section id="agent-pro" className="py-14 sm:py-20 lg:py-24 bg-[#071F17] relative overflow-hidden text-white">
@@ -41,7 +27,7 @@ export const AgentProSection: React.FC = () => {
             List Properties. <span className="text-[#00D084]">Connect Directly.</span>
           </h2>
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Choose a flexible plan tailored to your needs. Showcase your properties with exact Google Plus Code locations and direct WhatsApp leads.
+            Choose a flexible plan tailored to your needs. Showcase your properties with exact Google Plus Code locations and direct buyer leads.
           </p>
         </div>
 
@@ -91,7 +77,7 @@ export const AgentProSection: React.FC = () => {
                   <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
                     <Check className="w-3.5 h-3.5 text-[#00D084]" />
                   </div>
-                  <span>Direct WhatsApp & phone leads</span>
+                  <span>Direct phone & inquiry leads</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-[#00D084]/15 flex items-center justify-center shrink-0">
@@ -104,9 +90,7 @@ export const AgentProSection: React.FC = () => {
 
             <div className="pt-8">
               <a
-                href={starterWhatsAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 id="plan_starter_claim"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-200 cursor-pointer"
               >
@@ -167,7 +151,7 @@ export const AgentProSection: React.FC = () => {
                   <div className="w-5 h-5 rounded-full bg-[#00D084]/20 flex items-center justify-center shrink-0">
                     <Check className="w-3.5 h-3.5 text-[#00D084]" />
                   </div>
-                  <span>Direct WhatsApp & phone contacts</span>
+                  <span>Direct phone & inquiry contacts</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-[#00D084]/20 flex items-center justify-center shrink-0">
@@ -180,9 +164,7 @@ export const AgentProSection: React.FC = () => {
 
             <div className="pt-8">
               <a
-                href={growthWhatsAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 id="plan_growth_subscribe"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#00D084] hover:bg-[#00D084]/90 text-[#051A12] font-black text-sm shadow-lg shadow-[#00D084]/25 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
               >
@@ -249,9 +231,7 @@ export const AgentProSection: React.FC = () => {
 
             <div className="pt-8">
               <a
-                href={agencyWhatsAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 id="agent_pro_subscribe_click"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-200 cursor-pointer"
               >
@@ -268,7 +248,7 @@ export const AgentProSection: React.FC = () => {
         <div className="text-center text-xs text-slate-400 pt-10 sm:pt-12 flex items-center justify-center gap-6 flex-wrap">
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-[#00D084]" />
-            Direct buyer connection • Zero brokerage commissions
+            Direct buyer connection
           </span>
           <span className="hidden sm:inline">•</span>
           <span className="inline-flex items-center gap-1.5">
@@ -276,7 +256,7 @@ export const AgentProSection: React.FC = () => {
             Location accuracy via Google Plus Codes
           </span>
           <span className="hidden sm:inline">•</span>
-          <span>WhatsApp instant agent onboarding</span>
+          <span>Fast & simple agent onboarding</span>
         </div>
       </div>
     </section>
