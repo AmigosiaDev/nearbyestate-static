@@ -13,7 +13,7 @@ import { AgentWorkflowSection } from './components/AgentWorkflowSection';
 import { AgentProSection } from './components/AgentProSection';
 // import { FAQ } from './components/FAQ';
 import { ContactSection } from './components/ContactSection';
-import { DownloadCTA } from './components/DownloadCTA';
+// import { DownloadCTA } from './components/DownloadCTA';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
 import { MobileStickyCTA } from './components/MobileStickyCTA';
@@ -51,8 +51,8 @@ export const App: React.FC = () => {
         {/* 6. Contact & Support Enquiry Section */}
         <ContactSection />
 
-        {/* 7. Bottom Homepage App Download CTA */}
-        <DownloadCTA onOpenIOSModal={() => setIosModalOpen(true)} />
+        {/* 7. Bottom Homepage App Download CTA (Commented out) */}
+        {/* <DownloadCTA onOpenIOSModal={() => setIosModalOpen(true)} /> */}
       </main>
 
       {/* 11. Footer */}
