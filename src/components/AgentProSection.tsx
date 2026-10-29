@@ -10,7 +10,7 @@ interface AgentProSectionProps {
 export const AgentProSection: React.FC<AgentProSectionProps> = ({ onOpenIOSModal }) => {
 
   return (
-    <section id="agent-pro" className="py-14 sm:py-20 lg:py-24 bg-[#071F17] relative overflow-hidden text-white">
+    <section id="agent-pro" className="py-10 sm:py-14 lg:py-16 bg-[#071F17] relative overflow-hidden text-white">
       {/* Anchor for pricing navigation */}
       <div id="pricing" className="sr-only" />
 
@@ -23,16 +23,16 @@ export const AgentProSection: React.FC<AgentProSectionProps> = ({ onOpenIOSModal
 
       <div className="max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10 space-y-3">
           {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00D084]/15 border border-[#00D084]/30 text-[#00D084] text-xs font-bold tracking-wide uppercase">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Agent & Property Plans</span>
           </div> */}
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight">
-            List Properties. <span className="text-[#00D084]">Connect Directly.</span>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-white tracking-tight leading-tight sm:whitespace-nowrap">
+            List Properties &amp; <span className="text-[#00D084]">Connect Directly.</span>
           </h2>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Choose a flexible plan tailored to your needs. Showcase your properties with exact Google Plus Code locations and direct buyer leads.
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+            Choose a flexible plan tailored to your needs. Showcase your properties with  Google Plus Code locations and direct buyer leads.
           </p>
         </div>
 

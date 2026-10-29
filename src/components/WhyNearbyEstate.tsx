@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layers, Smartphone, MapPin } from 'lucide-react';
+import { Layers, Smartphone, MapPin, Briefcase } from 'lucide-react';
 
 export const WhyNearbyEstate: React.FC = () => {
   return (
-    <section id="why-us" className="py-16 sm:py-24 lg:py-32 bg-[#071F17] relative overflow-hidden">
+    <section id="why-us" className="py-10 sm:py-14 lg:py-16 bg-[#071F17] relative overflow-hidden">
       {/* ================= CLEAN GPS MAP & COORDINATE GRID BACKGROUND ================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Continuous Forest Green Vertical Gradient */}
@@ -53,12 +53,12 @@ export const WhyNearbyEstate: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
             <span>The NearbyEstate Advantage</span>
           </div>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Property Search & Made Simple
+            Property Search Made Simple
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-emerald-100/75 font-normal">
             Built to help you find properties near you, easily.
@@ -150,6 +150,40 @@ export const WhyNearbyEstate: React.FC = () => {
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal sm:pl-14">
               Download on Google Play Store, or browse directly on our website without installing.
+            </p>
+          </motion.div>
+
+          {/* 4. For Agents */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+            whileHover={{ y: -3 }}
+            className="bg-gradient-to-br from-[#0D281E] via-[#0A261D] to-[#071F17] rounded-3xl p-5 sm:p-7 border border-[#00D084]/30 hover:border-[#00D084] hover:shadow-2xl hover:shadow-[#00D084]/10 transition-all duration-300 text-left"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-2xl bg-[#00D084]/15 border border-[#00D084]/30 shadow-xs flex items-center justify-center text-[#00D084] shrink-0">
+                  <Briefcase className="w-5 h-5 text-[#00D084]" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Dedicated for Agents</h3>
+                  <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                    For Agents
+                  </span>
+                </div>
+              </div>
+
+              {/* Agent Badge */}
+              <div className="hidden xs:flex items-center gap-2 self-start sm:self-auto bg-[#051811] px-3 py-1.5 rounded-xl border border-emerald-500/20 text-[11px] font-mono text-emerald-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
+                <span>List · Reach · Sell</span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal sm:pl-14">
+              List your properties, reach nearby buyers directly, and get genuine leads — all from one agent dashboard.
             </p>
           </motion.div>
         </div>

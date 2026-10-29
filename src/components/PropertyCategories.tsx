@@ -14,7 +14,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const PropertyCategories: React.FC = () => {
   return (
-    <section id="categories" className="py-16 sm:py-24 lg:py-28 bg-[#071F17] relative overflow-hidden">
+    <section id="categories" className="py-10 sm:py-14 lg:py-16 bg-[#071F17] relative overflow-hidden">
       {/* ================= SEAMLESS MATCHING HERO FOREST GREEN BACKGROUND ================= */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Soft top gradient to ensure 100% continuous flow from Hero */}
@@ -57,7 +57,7 @@ export const PropertyCategories: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3.5">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3.5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-[11px] font-extrabold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
             <span>Property Categories</span>

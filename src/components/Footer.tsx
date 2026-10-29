@@ -25,13 +25,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenIOSModal }) =
            4. Massive signature lowercase wordmark "nearbyestate"
            5. Clean bottom bar with Terms, Privacy, and Copyright
            ========================================================================= */
-        <footer className="bg-[#04140E] text-white pt-10 sm:pt-14 pb-28 sm:pb-12 relative overflow-hidden text-left border-t border-emerald-500/20">
+        <footer className="bg-[#04140E] text-white pt-8 sm:pt-10 pb-20 sm:pb-8 relative overflow-hidden text-left border-t border-emerald-500/20">
           {/* Subtle top ambient glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* TOP ROW: Hero CTA Banner on Left + Essential Contact on Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-10 sm:pb-14 border-b border-emerald-500/15">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-6 sm:pb-8 border-b border-emerald-500/15">
               
               {/* Left Column (Conversion & Headline) */}
               <div className="lg:col-span-7 space-y-4 sm:space-y-5">
@@ -92,46 +92,45 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenIOSModal }) =
                   <li className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-[#00D084] shrink-0" />
                     <a
-                      href="mailto:sayyidnishasns200@gmail.com"
+                      href="mailto:admin@amigosia.com"
                       className="hover:text-white transition-colors"
                     >
-                      contact@nearbyestate.in
+                      admin@amigosia.com
                     </a>
                   </li>
 
                   <li className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#00D084] shrink-0" />
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+918123425003"
                       className="hover:text-white transition-colors"
                     >
-                      +91 999 500 0000 (Direct Helpline)
+                      8123425003
                     </a>
                   </li>
 
                   <li className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-[#00D084] shrink-0 mt-0.5" />
                     <span className="text-slate-400 leading-snug">
-                      Kerala, India • Amigosia Pvt.
+                      Amigosia Pvt. • KSUM Palakkad, Kerala
                     </span>
                   </li>
                 </ul>
-
-                <p className="text-xs text-slate-400 leading-relaxed pt-1">
-                  Location-first real estate discovery platform connecting buyers, tenants, and property owners directly.
-                </p>
               </div>
             </div>
 
             {/* MIDDLE ROW: GIGANTIC BOLD LOWERCASE WORDMARK (Signature Cofactr Style) */}
-            <div className="py-6 sm:py-10 text-center select-none overflow-hidden">
+            <div className="pt-4 sm:pt-6 pb-2 text-center select-none overflow-hidden">
               <span className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-emerald-400/20 hover:text-emerald-400/30 transition-colors lowercase block leading-none">
                 nearbyestate
               </span>
+              <p className="mt-2 sm:mt-2.5 text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto px-4 leading-relaxed font-normal">
+                Location-first real estate discovery platform connecting buyers, tenants, and property owners directly.
+              </p>
             </div>
 
             {/* BOTTOM ROW: Legal Links & Copyright */}
-            <div className="pt-6 border-t border-emerald-500/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div className="pt-4 border-t border-emerald-500/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
               {/* Left: Legal & Navigation */}
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 <button

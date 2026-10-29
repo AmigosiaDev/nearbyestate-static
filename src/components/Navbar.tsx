@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { triggerSmartDownload, getPlayStoreTrackedUrl } from '../utils/appLinks';
 
 // Google Play icon SVG
@@ -28,8 +28,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenIOSModal }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Categories', href: '#categories', hasDropdown: true },
-    { label: 'Why Us', href: '#why-us' },
+    { label: 'Categories', href: '#categories' },
+    { label: 'Why NearbyEstate', href: '#why-us' },
     { label: 'For Agents', href: '#agent-pro' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -84,9 +84,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenIOSModal }) => {
                       className="group inline-flex items-center gap-1 text-[13px] lg:text-sm font-semibold text-slate-700 hover:text-[#0F382C] transition-colors"
                     >
                       <span>{link.label}</span>
-                      {link.hasDropdown && (
-                        <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#0F382C] group-hover:translate-y-0.5 transition-all" />
-                      )}
                     </a>
                   ))}
                 </nav>

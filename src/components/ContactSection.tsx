@@ -87,7 +87,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="pt-16 pb-28 sm:py-24 lg:py-28 bg-[#071F17] relative overflow-hidden text-white">
+    <section id="contact" className="py-10 sm:py-14 lg:py-16 bg-[#071F17] relative overflow-hidden text-white">
       {/* Ambient Radiant Forest Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00D084]/10 blur-[100px] rounded-full" />
@@ -115,7 +115,7 @@ export const ContactSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-[#0A261D]/90 backdrop-blur-2xl text-white rounded-3xl sm:rounded-[36px] p-6 sm:p-12 lg:p-16 shadow-2xl shadow-black/70 border border-white/10 relative overflow-hidden"
+            className="bg-[#0A261D]/90 backdrop-blur-2xl text-white rounded-3xl sm:rounded-[36px] p-6 sm:p-10 lg:p-12 shadow-2xl shadow-black/70 border border-white/10 relative overflow-hidden"
           >
             {/* Subtle Top Gradient Rim Highlight */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D084]/50 to-transparent" />
@@ -126,7 +126,7 @@ export const ContactSection: React.FC = () => {
             </p>
 
             {/* Editorial Serif Headline */}
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-white font-normal tracking-tight text-center max-w-xl mx-auto leading-tight sm:leading-snug mb-8 sm:mb-12">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2.5rem] text-white font-normal tracking-tight text-center max-w-xl mx-auto leading-tight sm:leading-snug mb-6 sm:mb-8">
               Have questions or a property enquiry to share?
             </h2>
 

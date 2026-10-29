@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenIOSModal }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] pt-28 pb-14 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-28 overflow-hidden flex flex-col justify-center bg-[#071F17] text-white"
+      className="relative min-h-[88vh] pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-14 overflow-hidden flex flex-col justify-center bg-[#071F17] text-white"
     >
       {/* ================= LUXURY ARCHITECTURAL VILLA BACKGROUND ================= */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenIOSModal }) => {
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold text-white tracking-tight leading-[1.12] pb-1"
             >
-              Find Properties Near You
+              Find Properties Near to You
             </motion.h1>
 
             {/* Concise 2-line Subheader */}
