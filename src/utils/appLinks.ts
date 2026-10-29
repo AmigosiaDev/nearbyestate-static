@@ -25,10 +25,8 @@ export const isMobileDevice = (): boolean => {
 /**
  * Returns formatted Google Play Store URL with UTM attribution parameters
  */
-export const getPlayStoreTrackedUrl = (source = 'website'): string => {
-  const base = BRAND_CONFIG.playStoreUrl;
-  const referrer = encodeURIComponent(`utm_source=landing_page&utm_medium=button&utm_campaign=${source}`);
-  return `${base}&referrer=${referrer}`;
+export const getPlayStoreTrackedUrl = (_source = 'website'): string => {
+  return BRAND_CONFIG.playStoreUrl;
 };
 
 /**
@@ -60,9 +58,7 @@ export const triggerSmartDownload = (
 
   // 2. Android Visitor Handling (1-Tap Native Google Play App Intent)
   if (isAndroid()) {
-    const marketUrl = `market://details?id=space.nearestate.twa&referrer=utm_source%3Dwebsite%26utm_medium%3D${encodeURIComponent(
-      source
-    )}`;
+    const marketUrl = 'market://details?id=space.nearestate.twa';
     const webFallback = getPlayStoreTrackedUrl(source);
 
     // Attempt market:// scheme first for immediate native app store popup
